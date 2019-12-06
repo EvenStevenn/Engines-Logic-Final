@@ -11,12 +11,19 @@ public class PlayerScript : MonoBehaviour
     float turnSmoothVelocity;
 
     public Transform cameraTransform;
+    public Transform turretHolder;
+
+    public GameObject turret;
+    public Rigidbody turretRB;
+
+    public bool hasTurret;
 
     
     void Start()
     {
         Cursor.visible = false;
         cameraTransform = Camera.main.transform;
+        hasTurret = false;
     }
 
     void Update()
@@ -35,7 +42,17 @@ public class PlayerScript : MonoBehaviour
         //float speed = ((carrying) ? playerSpeedCarrying : playerSpeed)* inputDirection.magnitude;
 
         transform.Translate(transform.forward * playerSpeed * inputDirection.magnitude * Time.deltaTime, Space.World);
+    }
 
-        
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            hasTurret = true;
+            turretRB.isKinematic = true;
+            turret.transform.position = turretHolder.transform.position;
+            turret.transform.rotation = turretHolder.transform.rotation;
+            turret.transform.parent = turretHolder;
+        }
     }
 }
