@@ -8,6 +8,7 @@ public class CameraScript : MonoBehaviour
     private float pitch;
     public float cameraDistance = 2.0f;
     public float mouseSensitivity = 10.0f;
+    
 
     public Vector2 pitchMinMax = new Vector2 (-40,85);
 
@@ -23,7 +24,7 @@ public class CameraScript : MonoBehaviour
         Vector3 playerRotation = new Vector3(pitch, yaw);
         transform.eulerAngles =playerRotation;
 
-        transform.position = player.position - transform.forward * cameraDistance;
+        transform.position = player.position - transform.forward * cameraDistance ;
         
     }
 }
