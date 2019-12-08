@@ -6,7 +6,7 @@ using UnityEngine;
 public enum TileType
 {
     walkable,
-    obstacle,
+    towerable,
     edge
 }
 
@@ -209,7 +209,7 @@ public class GridManager : MonoBehaviour
                 returnThisTile = TileType.walkable;
                 break;
             case 2:
-                returnThisTile = TileType.obstacle;
+                returnThisTile = TileType.towerable;
                 break;
         }
         return returnThisTile;
@@ -227,7 +227,7 @@ public class GridManager : MonoBehaviour
             case TileType.walkable:
                 returnThisTile = 1;
                 break;
-            case TileType.obstacle:
+            case TileType.towerable:
                 returnThisTile = 2;
                 break;
         }
