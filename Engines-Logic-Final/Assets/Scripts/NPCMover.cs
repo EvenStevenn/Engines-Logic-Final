@@ -13,7 +13,7 @@ public class NPCMover : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetNode.transform.position, step);
         transform.LookAt(targetNode.transform);
         float distance = Vector3.Distance(transform.position, targetNode.transform.position);
-        if (distance < 0.5f)
+        if (distance == 0f)
         {
             int newPos = Random.Range(0, targetNode.neighbours.Count);
             //find a new random position and go to it from your list of neighbors. 

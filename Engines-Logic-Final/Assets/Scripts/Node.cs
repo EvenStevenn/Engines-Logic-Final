@@ -5,7 +5,7 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
     public List<Node> neighbours;
-    public bool occupied;
+    //public bool occupied;
 
     private void OnDrawGizmosSelected()
     {
