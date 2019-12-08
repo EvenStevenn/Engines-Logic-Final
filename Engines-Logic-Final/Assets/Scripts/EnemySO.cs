@@ -9,5 +9,6 @@ public class EnemySO : ScriptableObject
     public int numOfCoins;
     public bool isDead;
     public int EnemySpeed;
+    public GameObject enemyPrefab;
 
 }
