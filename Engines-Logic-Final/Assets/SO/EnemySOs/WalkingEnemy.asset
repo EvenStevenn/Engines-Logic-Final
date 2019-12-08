@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 650b4b7c6b6a4404b974743eae5ad2f8, type: 3}
-  m_Name: RunningEnemy
+  m_Name: WalkingEnemy
   m_EditorClassIdentifier: 
   health: 10
-  numOfCoins: 20
+  numOfCoins: 10
   isDead: 0
-  EnemySpeed: 5
+  EnemySpeed: 2
+  enemyPrefab: {fileID: 0}
