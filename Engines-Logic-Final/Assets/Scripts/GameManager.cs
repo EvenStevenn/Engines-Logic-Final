@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public string mainmenuScene;
     public bool paused;
 
+    public ScriptableObject enemy;
+    public TextMeshProUGUI coincount;
 
     // Update is called once per frame
     void Update()
@@ -66,5 +69,10 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("Game is resumed.");
+    }
+
+    public void Dead()
+    {
+
     }
 }
