@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Wave", menuName = "Create Wave SO", order = 2)]
 public class WaveSO : ScriptableObject
 {
-    List<GameObject> ListOfEnemiesinWave;
+    //public List<ScriptableObject> ListOfEnemiesinWave;
+
+    public List<EnemySO> ListOfEnemies = new List<EnemySO>();
 }

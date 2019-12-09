@@ -16,4 +16,5 @@ MonoBehaviour:
   numOfCoins: 10
   isDead: 0
   EnemySpeed: 2
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 5813225714587759269, guid: eea96696baa5fc8419bcf68f59c2e98a,
+    type: 3}
