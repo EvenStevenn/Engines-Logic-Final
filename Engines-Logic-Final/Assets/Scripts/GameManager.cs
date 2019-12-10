@@ -21,8 +21,11 @@ public class GameManager : MonoBehaviour
 
     public ScriptableObject enemy;
     public TextMeshProUGUI coincount;
+    public TextMeshProUGUI countdown;
 
-    // Update is called once per frame
+    //enemy's left in wave? Number of waves remain??
+    public TextMeshProUGUI wavestatus;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeSelf)
@@ -34,45 +37,52 @@ public class GameManager : MonoBehaviour
         {
             Pause();
         }
+
+        //foreach (ScriptableObject.enemy in mainScene)
+        {
+            
+        }
     }
 
+    //Start Game/Reload Game function
     public void StartGame()
     {
         SceneManager.LoadScene(mainScene);
         Debug.Log("Loading game level...");
+        Time.timeScale = 1f;
     }
 
+    //Return to Main Menu function
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(mainmenuScene);
         Debug.Log("Loading main menu...");
     }
 
+    //Quit Game function
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quitting game...");
     }
 
+    //Pause menu/camera disable function
     public void Pause()
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         Debug.Log("Game is paused.");
+        mainCam.SetActive(false);
     }
 
+    //Resume game/camera re-enable function
     public void UnPause()
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("Game is resumed.");
-    }
-
-    public void Dead()
-    {
-
+        mainCam.SetActive(true);
     }
 }

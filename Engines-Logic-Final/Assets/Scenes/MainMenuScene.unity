@@ -532,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 183, y: 0}
+  m_AnchoredPosition: {x: 156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696804241
@@ -1093,6 +1093,8 @@ MonoBehaviour:
   mainScene: Skye'sScene
   mainmenuScene: 
   paused: 0
+  enemy: {fileID: 0}
+  coincount: {fileID: 0}
 --- !u!4 &1441145939
 Transform:
   m_ObjectHideFlags: 0

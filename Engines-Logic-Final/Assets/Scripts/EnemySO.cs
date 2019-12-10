@@ -10,5 +10,4 @@ public class EnemySO : ScriptableObject
     public bool isDead;
     public int EnemySpeed;
     public GameObject enemyPrefab;
-
 }
