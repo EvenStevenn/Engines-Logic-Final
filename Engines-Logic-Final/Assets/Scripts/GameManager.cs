@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
     public bool paused;
 
     public ScriptableObject enemy;
-    public TextMeshProUGUI coincount;
-    public TextMeshProUGUI countdown;
-
-    //enemy's left in wave? Number of waves remain??
-    public TextMeshProUGUI wavestatus;
 
     void Update()
     {
@@ -36,11 +31,6 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
-        }
-
-        //foreach (ScriptableObject.enemy in mainScene)
-        {
-            
         }
     }
 

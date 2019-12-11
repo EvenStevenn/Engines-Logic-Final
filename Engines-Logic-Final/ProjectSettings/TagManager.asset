@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Turret
   - TowerTile
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
