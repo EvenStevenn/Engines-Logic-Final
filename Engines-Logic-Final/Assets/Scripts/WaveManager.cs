@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WaveState
+{
+    available,
+    attacking,
+    finished
+}
 public class WaveManager : MonoBehaviour
 {
 
-    public List<ScriptableObject> listOfWaves;
+    public List<ScriptableObject> listOfAvailableWaves;
     public Transform enemySpawnPoint;
+    public float timeBetweenWaves = 10f;
+
+ 
 
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -25,10 +27,12 @@ public class WaveManager : MonoBehaviour
 
     public void BeginWave()
     {
-        //find out which wave the player is currently on, by ID. 
-        for(int i = 0; i <listOfWaves.Count;i++)
+        for(int i = 0; i <listOfAvailableWaves.Count;i++)
         {
-            //uncompleted.
+            if (listOfAvailableWaves[i])
+            {
+                ;
+            }
         }
     }
 
