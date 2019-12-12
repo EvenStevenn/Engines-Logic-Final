@@ -1098,6 +1098,8 @@ MonoBehaviour:
   waveTimerScript: {fileID: 0}
   waveNumberObj: {fileID: 0}
   waveNumber: {fileID: 0}
+  finalWaypoint: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &741894647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390068987830596885, guid: 530250c53728e1d4e92e9c0ca1a7d248,
@@ -3181,6 +3183,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 8819991650986263314}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: mainmenuButton
+      value: 
+      objectReference: {fileID: 8819991650986263315}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 8819991650986263316}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: gamewinMenu
+      value: 
+      objectReference: {fileID: 8819991650986263313}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: gameoverMenu
+      value: 
+      objectReference: {fileID: 8819991650986263312}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: inGameHUD
+      value: 
+      objectReference: {fileID: 8819991650986263317}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
+        type: 3}
+      propertyPath: mainScene
+      value: MasterScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6405616212611851084, guid: 16964354e2ec44242a9469ea15e63c7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3236,41 +3278,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: restartButton
-      value: 
-      objectReference: {fileID: 8819991650986263314}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: mainmenuButton
-      value: 
-      objectReference: {fileID: 8819991650986263315}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 8819991650986263316}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: gamewinMenu
-      value: 
-      objectReference: {fileID: 8819991650986263313}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: gameoverMenu
-      value: 
-      objectReference: {fileID: 8819991650986263312}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: inGameHUD
-      value: 
-      objectReference: {fileID: 8819991650986263317}
-    - target: {fileID: 6405616212611851083, guid: 16964354e2ec44242a9469ea15e63c7e,
-        type: 3}
-      propertyPath: mainCam
-      value: 
-      objectReference: {fileID: 963194225}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16964354e2ec44242a9469ea15e63c7e, type: 3}
 --- !u!1 &1605103571 stripped
@@ -4416,6 +4423,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770927544980809439, guid: 33d10a8a612b14f4db63b33a19222d4a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.299988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001568194, guid: 33d10a8a612b14f4db63b33a19222d4a, type: 3}
+      propertyPath: m_Name
+      value: NextWave
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33d10a8a612b14f4db63b33a19222d4a, type: 3}

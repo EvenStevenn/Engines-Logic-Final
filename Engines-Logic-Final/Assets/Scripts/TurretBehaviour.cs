@@ -27,7 +27,11 @@ public class TurretBehaviour : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //turn turret to an enemy in range
+<<<<<<< HEAD
         if (other.tag == "Enemy")
+=======
+        if (myCollider.CompareTag("Enemy"))
+>>>>>>> 1605845d3833a445cd00a90ac0e75b6d3fa8f679
         {
             gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - this.gameObject.transform.position);
             enemyPos = other.transform.position;

@@ -27,6 +27,9 @@ public class WaveManager : MonoBehaviour
     public GameObject waveNumberObj;
     public TextMeshProUGUI waveNumber;
 
+    public GameObject finalWaypoint;
+    public GameObject gameManager;
+
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
@@ -43,7 +46,16 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
         WaveStatusCheck();
-      
+        
+
+        //Lose game condition
+        foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
+        {
+            if(singleEnemy.enemyPrefab.transform.position == finalWaypoint.transform.position)
+            {
+
+            }
+        }
     }
 
     [ContextMenu("Spawn Wave")]
