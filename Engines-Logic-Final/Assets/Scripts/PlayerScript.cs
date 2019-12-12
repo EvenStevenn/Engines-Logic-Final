@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
-{ 
+{
     public CharacterController controller;
 
-    public float playerSpeed = 6.0f;
+    public float playerSpeed = 2.0f;
+    public float diagPlayerSpeed = 1.0f;
+    public float straightPlayerSpeed = 2.0f;
     public float playerSpeedCarrying = 2.0f;
     public float turnSmoothTime = .12f;
     public float groundDistance = 0.4f;
@@ -27,12 +29,13 @@ public class PlayerScript : MonoBehaviour
 
     public Vector3 velocity;
 
-    
+
     void Start()
     {
         Cursor.visible = false;
         cameraTransform = Camera.main.transform;
         hasTurret = false;
+        float straightPlayerSpeed = playerSpeed;
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
 
+        //rotates player based on input
         if (inputDirection != Vector2.zero)
         {
             float targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -51,20 +55,27 @@ public class PlayerScript : MonoBehaviour
         Vector3 move = (this.gameObject.transform.forward * Mathf.Abs(input.x) * playerSpeed) + (this.gameObject.transform.forward * Mathf.Abs(input.y) * playerSpeed);
         controller.Move(move * Time.deltaTime);
 
+        //gravity check based on "ground" layer
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y< 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //code to change speed based on whether the player is carrying a turret
-        //float speed = ((carrying) ? playerSpeedCarrying : playerSpeed)* inputDirection.magnitude;
 
-        //old code:
-        //transform.Translate(transform.forward * playerSpeed * inputDirection.magnitude * Time.deltaTime, Space.World);
-
+        //checks if player is moving diagonally
+        if (Input.GetAxisRaw("Horizontal") != 0 && (Input.GetAxisRaw("Vertical") != 0))
+        {
+            playerSpeed = diagPlayerSpeed;
+            Debug.Log(playerSpeed);
+        }
+        else
+        {
+            playerSpeed = straightPlayerSpeed;
+            Debug.Log(playerSpeed);
+        }
     }
 
     private void OnTriggerStay(Collider other)

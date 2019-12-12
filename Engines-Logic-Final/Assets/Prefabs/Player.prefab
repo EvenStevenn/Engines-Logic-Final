@@ -266,7 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2301066083274310245}
-  playerSpeed: 6
+  playerSpeed: 2
+  diagPlayerSpeed: 1
+  straightPlayerSpeed: 2
   playerSpeedCarrying: 2
   turnSmoothTime: 0.1
   groundDistance: 0.4
