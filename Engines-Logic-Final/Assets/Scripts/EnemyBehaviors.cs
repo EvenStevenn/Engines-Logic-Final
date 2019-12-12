@@ -12,19 +12,19 @@ public class EnemyBehaviors : MonoBehaviour
 
     public EnemySO enemySO;
 
-    public TextMeshProUGUI coincount;
+    public TextMeshProUGUI coinCount;
     public TextMeshProUGUI countdown;
 
-    private Vector3 enemyPos;
-    private Vector3 turretPos;
-    private Vector3 projectilePos;
+    public Vector3 enemyPos;
+    public Vector3 turretPos;
+    public Vector3 projectilePos;
 
-    private int speed = 1;
-    private int enemyHP;
-    private int coinAmount = 1;
+    public int speed = 1;
+    public int enemyHP;
+    public int coinAmount = 1;
 
     public Transform shootFrom;
-    Rigidbody ProjectileRB;
+    public Rigidbody projectileRB;
     public float projectileSpeedHigh;
     public float projectileSpeedLow;
 
@@ -82,7 +82,7 @@ public class EnemyBehaviors : MonoBehaviour
             {
                 Object.Destroy(enemy);
                 Debug.Log("Enemy dead " + enemyHP);
-                coincount.text += 20;
+                coinCount.text += 20;
                 enemySO.isDead = true;
             }
 
@@ -96,8 +96,8 @@ public class EnemyBehaviors : MonoBehaviour
         turretPos = turret.transform.position;
 
         Instantiate(projectilePrefab, turretPos, Quaternion.identity);
-        ProjectileRB = GetComponent<Rigidbody>();
-        ProjectileRB.AddForce(new Vector3(Random.Range(projectileSpeedLow, projectileSpeedHigh), Random.Range(projectileSpeedLow, projectileSpeedHigh)), ForceMode.Impulse);
+        projectileRB = GetComponent<Rigidbody>();
+        projectileRB.AddForce(new Vector3(Random.Range(projectileSpeedLow, projectileSpeedHigh), Random.Range(projectileSpeedLow, projectileSpeedHigh)), ForceMode.Impulse);
         //enemyPos.y = +1;
         projectilePrefab.transform.position = enemyPos;
         Debug.Log("Turret attacking...");
