@@ -14,26 +14,24 @@ public class TurretBehaviour : MonoBehaviour
 
     private void Start()
     {
-        //bulletPrefab = GameObject.FindGameObjectWithTag("Bullet");
-
+          //bulletRB = bulletPrefab.GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
     {
 
-    Vector3.MoveTowards(bulletPrefab.transform.position, enemyPos, 3*Time.deltaTime);
+
     }
 
-    private void OnTriggerStay(Collider myCollider)
+    private void OnTriggerStay(Collider other)
     {
         //turn turret to an enemy in range
-        if (myCollider.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-            gameObject.transform.rotation = Quaternion.LookRotation(myCollider.transform.position - this.gameObject.transform.position);
-            StartCoroutine(DoAttack((myCollider)));
-            enemy.transform.position = myCollider.transform.position;
-            enemyPos = myCollider.transform.position;
-            bulletRB = bulletPrefab.GetComponent<Rigidbody>();
+            gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - this.gameObject.transform.position);
+            enemyPos = other.transform.position;
+            StartCoroutine(DoAttack((other)));
         }
     }
     
