@@ -5,13 +5,12 @@ using UnityEngine;
 public class TurretScript : MonoBehaviour
 {
     bool carryingTurret;
-    Rigidbody turretRB;
-    public GameObject turretHolder;
-    public GameObject towerTile;
+    public GameObject playerTurretHolder;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerTurretHolder = GameObject.FindGameObjectWithTag("PlayerTurretHolder");
         
     }
 
@@ -26,18 +25,18 @@ public class TurretScript : MonoBehaviour
         if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Player")
         {
             carryingTurret = true;
-            turretRB.isKinematic = true;
-            this.gameObject.transform.position = turretHolder.transform.position;
-            this.gameObject.transform.rotation = turretHolder.transform.rotation;
-            this.gameObject.transform.parent = turretHolder.transform;
+            this.gameObject.transform.position = playerTurretHolder.transform.position;
+            this.gameObject.transform.rotation = playerTurretHolder.transform.rotation;
+            this.gameObject.transform.parent = playerTurretHolder.transform;
+            Debug.Log("player has picked up turret");
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
         {
             if (other.gameObject.transform.childCount < 1)
             {
-                this.gameObject.transform.parent = towerTile.transform;
-                this.gameObject.transform.position = towerTile.transform.position + (new Vector3(0, 0.5f, 0));
+                this.gameObject.transform.parent = other.transform;
+                this.gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
                 carryingTurret = false;
             }
         }

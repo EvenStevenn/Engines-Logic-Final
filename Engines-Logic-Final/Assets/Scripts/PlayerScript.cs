@@ -16,11 +16,7 @@ public class PlayerScript : MonoBehaviour
     float turnSmoothVelocity;
 
     public Transform cameraTransform;
-    public Transform turretHolder;
     public Transform groundCheck;
-
-    public GameObject turret;
-    public Rigidbody turretRB;
 
     public bool hasTurret;
     bool isGrounded;
@@ -69,24 +65,12 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0 && (Input.GetAxisRaw("Vertical") != 0))
         {
             playerSpeed = diagPlayerSpeed;
-            Debug.Log(playerSpeed);
+            //Debug.Log(playerSpeed);
         }
         else
         {
             playerSpeed = straightPlayerSpeed;
-            Debug.Log(playerSpeed);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Turret")
-        {
-            hasTurret = true;
-            turretRB.isKinematic = true;
-            turret.transform.position = turretHolder.transform.position;
-            turret.transform.rotation = turretHolder.transform.rotation;
-            turret.transform.parent = turretHolder;
+            //Debug.Log(playerSpeed);
         }
     }
 }
