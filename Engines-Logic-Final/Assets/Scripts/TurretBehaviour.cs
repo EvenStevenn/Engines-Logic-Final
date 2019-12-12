@@ -16,6 +16,7 @@ public class TurretBehaviour : MonoBehaviour
         }
     
 
+<<<<<<< HEAD
         //move the projectile to enemyPos
         /*if (eb.projectilePrefab != null)
         {
@@ -26,6 +27,9 @@ public class TurretBehaviour : MonoBehaviour
     }
 
     void ProjectileAttack()
+=======
+    public void DoAttack(Collider enemyCollider)
+>>>>>>> parent of fcd6ea9... Added turret turning
     {
 
         float dist = Vector3.Distance(eb.projectilePos, eb.enemyPos);

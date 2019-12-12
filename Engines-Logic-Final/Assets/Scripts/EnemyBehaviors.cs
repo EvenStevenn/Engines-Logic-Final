@@ -49,6 +49,7 @@ public class EnemyBehaviors : MonoBehaviour
         //projectilePrefab = GameObject.FindGameObjectWithTag("Projectile");
         
 
+<<<<<<< HEAD
         //move the projectile to enemyPos
         if (projectilePrefab != null)
         {
@@ -97,5 +98,55 @@ public class EnemyBehaviors : MonoBehaviour
         //enemyPos.y = +1;
         projectilePrefab.transform.position = enemyPos;
         Debug.Log("Turret attacking...");
+=======
+    //    //move the projectile to enemyPos
+    //    if (projectilePrefab != null)
+    //    {
+    //        projectilePos = Vector3.MoveTowards(turret.transform.position, enemy.transform.position, 3);
+    //    }
+
+    //    ProjectileAttack();
+    //}
+
+    //void ProjectileAttack()
+    //{
+    //    float dist = Vector3.Distance(projectilePos, enemyPos);
+
+    //    if (dist < 5)
+    //    {
+    //        Debug.Log("Projectile collided with enemy...");
+
+    //        //damage
+    //        if(enemyHP > 0)
+    //        {
+    //            enemyHP -= 10;
+    //            Debug.Log("Enemy damaged... " + enemyHP);
+    //        }
+
+    //        //death
+    //        else
+    //        {
+    //            Object.Destroy(enemy);
+    //            Debug.Log("Enemy dead " + enemyHP);
+    //            coinCount.text += 20;
+    //            enemySO.isDead = true;
+    //        }
+
+    //        Object.Destroy(projectilePrefab);
+    //    }
+    //}
+
+    //void TurretAttack()
+    //{
+    //    enemyPos = enemy.transform.position;
+    //    turretPos = turret.transform.position;
+
+    //    Instantiate(projectilePrefab, turretPos, Quaternion.identity);
+    //    projectileRB = GetComponent<Rigidbody>();
+    //    projectileRB.AddForce(new Vector3(Random.Range(projectileSpeedLow, projectileSpeedHigh), Random.Range(projectileSpeedLow, projectileSpeedHigh)), ForceMode.Impulse);
+    //    //enemyPos.y = +1;
+    //    projectilePrefab.transform.position = enemyPos;
+    //    Debug.Log("Turret attacking...");
+>>>>>>> parent of fcd6ea9... Added turret turning
     }
 }
