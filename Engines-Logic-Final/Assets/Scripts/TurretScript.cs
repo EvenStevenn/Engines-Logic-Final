@@ -12,6 +12,7 @@ public class TurretScript : MonoBehaviour
     {
         playerTurretHolder = GameObject.FindGameObjectWithTag("PlayerTurretHolder");
         
+        
     }
 
     // Update is called once per frame
