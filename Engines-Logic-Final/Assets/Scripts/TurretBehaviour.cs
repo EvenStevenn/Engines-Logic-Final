@@ -21,6 +21,7 @@ public class TurretBehaviour : MonoBehaviour
     {
         //spawn a projectile
         GameObject myPrefab = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        Debug.Log("Bullet spawned");
 
         //fire at enemy
         Rigidbody rb = myPrefab.GetComponent<Rigidbody>();
