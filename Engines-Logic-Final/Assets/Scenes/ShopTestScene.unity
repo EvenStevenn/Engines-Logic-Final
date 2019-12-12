@@ -1095,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &741071741
 Transform:
   m_ObjectHideFlags: 0
@@ -1139,6 +1139,8 @@ MonoBehaviour:
   waveTimerScript: {fileID: 0}
   waveNumberObj: {fileID: 0}
   waveNumber: {fileID: 0}
+  finalWaypoint: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &741894647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390068987830596885, guid: 530250c53728e1d4e92e9c0ca1a7d248,
@@ -3040,12 +3042,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4390068988166642914}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1516349188 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4430432470484589435, guid: 530250c53728e1d4e92e9c0ca1a7d248,
-    type: 3}
-  m_PrefabInstance: {fileID: 4390068988166642914}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517901873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390068989076227283, guid: 530250c53728e1d4e92e9c0ca1a7d248,
@@ -3751,6 +3747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5813225714587759269, guid: eea96696baa5fc8419bcf68f59c2e98a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5813225714587759266, guid: eea96696baa5fc8419bcf68f59c2e98a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4391,11 +4392,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4390068988166642916, guid: 530250c53728e1d4e92e9c0ca1a7d248,
-        type: 3}
-      propertyPath: turretSpawnPoint
-      value: 
-      objectReference: {fileID: 1516349188}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 530250c53728e1d4e92e9c0ca1a7d248, type: 3}
 --- !u!1001 &5813225713600689172

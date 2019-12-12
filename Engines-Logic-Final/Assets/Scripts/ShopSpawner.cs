@@ -28,16 +28,19 @@ public class ShopSpawner : MonoBehaviour
 
     public void Update()
     {
-        if (canSpawn && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("pressed e");
-            SpawnTurret();
+            if (canSpawn)
+            {
+                SpawnTurret();
+            }
         }
     }
 
     public void SpawnTurret()
     {
-        GameObject myTurret = Instantiate<GameObject>(turret, turretSpawnPoint);
+        Instantiate(turret, turretSpawnPoint.transform.position, Quaternion.identity);
         //GameObject myTurret = Instantiate<GameObject>(turret, other.transform);
         //float myY = myTurret.transform.position.y;
         //myY += 0.5f;
