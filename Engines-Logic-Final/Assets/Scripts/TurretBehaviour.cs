@@ -34,6 +34,11 @@ public class TurretBehaviour : MonoBehaviour
     public void DoAttack(Collider enemyCollider)
 >>>>>>> parent of fcd6ea9... Added turret turning
     {
+<<<<<<< HEAD
+=======
+        //spawn a projectile
+        GameObject myPrefab = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+>>>>>>> parent of fefdd14... Fixed code
 
         float dist = Vector3.Distance(eb.projectilePos, eb.enemyPos);
 
