@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - Projectile
   - PlayerTurretHolder
+  - waypoint0
+  - WaveTimer
+  - WaveManager
+  - WaveNumber
   layers:
   - Default
   - TransparentFX

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NPCMover : MonoBehaviour
 {
+    public GameObject waypoint0;
     public Node targetNode;
     public float speed = 3f;
 
     private void Start()
     {
-        FindObjectOfType<Node>();
+        waypoint0 = GameObject.FindGameObjectWithTag("waypoint0");
+        targetNode = waypoint0.GetComponent<Node>();
     }
 
     private void Update()

@@ -13,7 +13,7 @@ public class Node : MonoBehaviour
         {
             //Draws a blue line from this transform to the target
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, singleNode.transform.position);
+            //Gizmos.DrawLine(transform.position, singleNode.transform.position);
         }
 
     }
