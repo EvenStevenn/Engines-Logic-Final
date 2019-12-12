@@ -44,9 +44,8 @@ public class EnemyBehaviors : MonoBehaviour
         if (other.tag == "Enemy")
         {
             TurretAttack();
-
         }
-
+    
         //projectilePrefab = GameObject.FindGameObjectWithTag("Projectile");
         
 
@@ -61,10 +60,7 @@ public class EnemyBehaviors : MonoBehaviour
 
     void ProjectileAttack()
     {
-        
         float dist = Vector3.Distance(projectilePos, enemyPos);
-
-        //int enemyHP = 100;
 
         if (dist < 5)
         {
