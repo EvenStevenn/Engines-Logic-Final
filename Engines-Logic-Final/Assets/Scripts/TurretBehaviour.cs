@@ -10,6 +10,7 @@ public class TurretBehaviour : MonoBehaviour
     float range = 5;
     public GameObject waveManager;
     public WaveManager waveManagerScript;
+    public AudioManager audioManager;
 
 
     private void Awake()
@@ -25,8 +26,9 @@ public class TurretBehaviour : MonoBehaviour
         {
             Debug.Log("EH");
             Destroy(enemy);
-            waveManagerScript.waveSO.deadEnemyCount++;
-            Debug.Log(waveManagerScript.waveSO.deadEnemyCount);
+            audioManager.PlayEnemyDeathSound();
+            waveManagerScript.CheckForEnemies();
+            //Debug.Log(waveManagerScript.waveSO.deadEnemyCount);
         }
     }
 

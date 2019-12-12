@@ -31,7 +31,7 @@ public class ShopSpawner : MonoBehaviour
     public void Update()
     {
         //check if player wants to buy turret
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             Debug.Log("pressed e");
 
