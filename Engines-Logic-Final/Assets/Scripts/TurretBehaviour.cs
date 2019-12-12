@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
 {
-    public EnemyBehaviors eb;
 
     private void OnTriggerStay(Collider myCollider)
     {
