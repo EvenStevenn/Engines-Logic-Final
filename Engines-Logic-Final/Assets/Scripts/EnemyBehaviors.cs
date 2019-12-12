@@ -147,6 +147,9 @@ public class EnemyBehaviors : MonoBehaviour
     //    //enemyPos.y = +1;
     //    projectilePrefab.transform.position = enemyPos;
     //    Debug.Log("Turret attacking...");
+<<<<<<< HEAD
+>>>>>>> parent of fcd6ea9... Added turret turning
+=======
 >>>>>>> parent of fcd6ea9... Added turret turning
     }
 }

@@ -17,6 +17,7 @@ public class TurretBehaviour : MonoBehaviour
     
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //move the projectile to enemyPos
         /*if (eb.projectilePrefab != null)
         {
@@ -28,6 +29,8 @@ public class TurretBehaviour : MonoBehaviour
 
     void ProjectileAttack()
 =======
+=======
+>>>>>>> parent of fcd6ea9... Added turret turning
     public void DoAttack(Collider enemyCollider)
 >>>>>>> parent of fcd6ea9... Added turret turning
     {
