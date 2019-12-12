@@ -50,9 +50,6 @@ public class EnemyBehaviors : MonoBehaviour
         
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of fefdd14... Fixed code
         //move the projectile to enemyPos
         if (projectilePrefab != null)
         {
@@ -101,7 +98,6 @@ public class EnemyBehaviors : MonoBehaviour
         //enemyPos.y = +1;
         projectilePrefab.transform.position = enemyPos;
         Debug.Log("Turret attacking...");
-<<<<<<< HEAD
 =======
     //    //move the projectile to enemyPos
     //    if (projectilePrefab != null)
@@ -155,7 +151,5 @@ public class EnemyBehaviors : MonoBehaviour
 >>>>>>> parent of fcd6ea9... Added turret turning
 =======
 >>>>>>> parent of fcd6ea9... Added turret turning
-=======
->>>>>>> parent of fefdd14... Fixed code
     }
 }
