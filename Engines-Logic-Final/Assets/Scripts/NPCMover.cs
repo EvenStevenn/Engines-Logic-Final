@@ -7,6 +7,11 @@ public class NPCMover : MonoBehaviour
     public Node targetNode;
     public float speed = 3f;
 
+    private void Start()
+    {
+        FindObjectOfType<Node>();
+    }
+
     private void Update()
     {
         float step = speed * Time.deltaTime;
