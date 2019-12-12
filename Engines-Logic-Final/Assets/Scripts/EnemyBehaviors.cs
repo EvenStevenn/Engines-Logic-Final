@@ -83,6 +83,7 @@ public class EnemyBehaviors : MonoBehaviour
                 Object.Destroy(enemy);
                 Debug.Log("Enemy dead " + enemyHP);
                 coincount.text += 20;
+                enemySO.isDead = true;
             }
 
             Object.Destroy(projectilePrefab);
