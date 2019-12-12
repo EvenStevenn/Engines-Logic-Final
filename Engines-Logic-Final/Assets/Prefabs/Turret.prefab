@@ -1,6 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!1 &3237528418454031438
+=======
+--- !u!1 &2827175637895040930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5580319995663212781}
+  - component: {fileID: 2653684248475975332}
+  m_Layer: 0
+  m_Name: ProjectileSpawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5580319995663212781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827175637895040930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.945, z: 1.372}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 7167093567169829098}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2653684248475975332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827175637895040930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7167093565825482765
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,10 +242,19 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 3237528420144109055}
   - component: {fileID: 3237528420144109052}
   - component: {fileID: 3237528420144109053}
   - component: {fileID: 3237528420144109054}
+=======
+  - component: {fileID: 7167093566779790825}
+  - component: {fileID: 7167093566779790824}
+  - component: {fileID: 7167093566779790807}
+  - component: {fileID: 7167093566779790806}
+  - component: {fileID: 7167093566779790805}
+  - component: {fileID: 7167093566779790826}
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -265,8 +322,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
 --- !u!136 &3237528420144109054
 CapsuleCollider:
+=======
+--- !u!54 &7167093566779790806
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167093566779790803}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!65 &7167093566779790805
+BoxCollider:
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -325,6 +403,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &3237528420390634824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +418,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretHolder: {fileID: 0}
 --- !u!1 &3237528420445401906
+=======
+--- !u!1 &7167093567019800833
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,7 +501,58 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
 --- !u!135 &3237528420445401904
+=======
+--- !u!135 &7167093567019800835
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167093567019800833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7167093567169829096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7167093567169829098}
+  - component: {fileID: 7167093567169829097}
+  - component: {fileID: 2095685537}
+  m_Layer: 0
+  m_Name: Turret
+  m_TagString: Turret
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7167093567169829098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167093567169829096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.199772, y: 0.099999994, z: 6.017893}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 7167093566779790825}
+  - {fileID: 5580319995663212781}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7167093567169829097
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,5 +563,25 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_Radius: 5
   m_Center: {x: 0, y: -0.00000011920929, z: 0}
+=======
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2095685537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7167093567169829096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a22b801a33a18f44beb401a543da246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eb: {fileID: 0}
+  forRotation: {fileID: 7167093567019800833}
+  projectileSpawnPoint: {fileID: 0}
+>>>>>>> f7a7e67edb1e41f0bb270365e061aa62fe2c29f2
