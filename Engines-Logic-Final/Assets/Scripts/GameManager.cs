@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     public string mainmenuScene;
     public bool paused;
 
-    public ScriptableObject enemy;
-
 
     //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
