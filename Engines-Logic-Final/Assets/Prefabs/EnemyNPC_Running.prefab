@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 5813225714587759264}
   - component: {fileID: 5813225714587759271}
   - component: {fileID: 5813225714587759270}
+  - component: {fileID: -2308721737793117067}
   m_Layer: 0
   m_Name: EnemyNPC_Running
   m_TagString: Enemy
@@ -571,5 +572,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1098df63a69224580fd8b9db97036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoint0: {fileID: 0}
   targetNode: {fileID: 0}
   speed: 1
+--- !u!95 &-2308721737793117067
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813225714587759269}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f01933967388134c9f8a30d399be8e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
