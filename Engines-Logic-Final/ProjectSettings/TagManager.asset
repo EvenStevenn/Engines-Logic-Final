@@ -13,6 +13,7 @@ TagManager:
   - WaveTimer
   - WaveManager
   - WaveNumber
+  - Bullet
   layers:
   - Default
   - TransparentFX
