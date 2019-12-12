@@ -12,16 +12,23 @@ public class WaveManager : MonoBehaviour
     public List<ScriptableObject> listOfAvailableWaves;
 
     public Transform enemySpawnPoint;
+
     public TextMeshProUGUI countdownTimerText;
+   // public float currentTimeValue = 20f;
 
     public float timeBetweenWaves = 10f;
     public float timeBetweenEnemies = 4f;
 
-    
+    private void Start()
+    {
+        BeginWave();
+    }
+
+
 
     void Update()
     {
-
+       
     }
 
     public IEnumerator WaitTimeBetweenEnemies()
@@ -32,21 +39,39 @@ public class WaveManager : MonoBehaviour
     public IEnumerator WaitTimeBetweenWaves()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
+        countdownTimerText.text = timeBetweenWaves.ToString();
+        //Mathf.RoundToInt(Mathf.Ceil(currentTimeValue)).ToString();
+
     }
 
     public void BeginWave()
     {
         foreach(WaveSO singleWave in listOfAvailableWaves)
         {
-            if (waveSO.waveState == WaveState.available && waveSO.deadEnemyCount == 0)
+            if (singleWave.waveState == WaveState.available && singleWave.deadEnemyCount == 0)
             {
-                waveSO.waveState = WaveState.attacking;
+                singleWave.waveState = WaveState.attacking;
 
-                foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
+                foreach (EnemySO singleEnemy in singleWave.ListOfEnemies)
                 {
-                    Instantiate(enemySO.enemyPrefab);
-                    enemySO.enemyPrefab.transform.position = enemySpawnPoint.position;
+                    if(singleWave.waveState == WaveState.attacking)
+                    {
+                    Instantiate(singleEnemy.enemyPrefab);
+                    singleEnemy.enemyPrefab.transform.position = enemySpawnPoint.position;
+                    singleWave.deadEnemyCount++;
                     StartCoroutine(WaitTimeBetweenEnemies());
+                    }
+
+                    if(singleWave.deadEnemyCount == singleWave.ListOfEnemies.Count)
+                    {
+                        singleWave.waveState = WaveState.finished;
+                    }
+                }
+                if(singleWave.waveState == WaveState.finished)
+                {
+                    StartCoroutine(WaitTimeBetweenWaves());
+                    
+                    //call timer function
                 }
 
 
