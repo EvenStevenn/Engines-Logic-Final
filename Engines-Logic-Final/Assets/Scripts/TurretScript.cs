@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    public GameObject turret;
     bool carryingTurret;
     Rigidbody turretRB;
     public GameObject turretHolder;
+    public GameObject towerTile;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +27,19 @@ public class TurretScript : MonoBehaviour
         {
             carryingTurret = true;
             turretRB.isKinematic = true;
-            turret.transform.position = turretHolder.transform.position;
-            turret.transform.rotation = turretHolder.transform.rotation;
-            turret.transform.parent = turretHolder.transform;
+            this.gameObject.transform.position = turretHolder.transform.position;
+            this.gameObject.transform.rotation = turretHolder.transform.rotation;
+            this.gameObject.transform.parent = turretHolder.transform;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
         {
-            turret.transform.parent = null;
-            carryingTurret = false;
-            /*if (other.gameObject.tag == "TowerTile")
+            if (other.gameObject.transform.childCount < 1)
             {
-                //this.gameObject
-            }*/
+                this.gameObject.transform.parent = towerTile.transform;
+                this.gameObject.transform.position = towerTile.transform.position + (new Vector3(0, 0.5f, 0));
+                carryingTurret = false;
+            }
         }
 
     }
