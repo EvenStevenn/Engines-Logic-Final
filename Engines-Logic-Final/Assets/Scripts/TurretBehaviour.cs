@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
 {
-    public EnemyBehaviors eb;
+    public GameObject forRotation;
+    public Transform projectileSpawnPoint;
+    public GameObject projectilePrefab;
 
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider myCollider)
     {
-        //initiate attack sequence if enemy is detected
-        if (other.gameObject.tag == "Enemy")
+        //check if what entered is an enemy
+        if (myCollider.tag == "Enemy")
         {
-            Debug.Log("enemy in range");
-            TurretAttack();
+            DoAttack(myCollider);
         }
+<<<<<<< HEAD
     
 
 <<<<<<< HEAD
@@ -33,43 +35,19 @@ public class TurretBehaviour : MonoBehaviour
 >>>>>>> parent of fcd6ea9... Added turret turning
     public void DoAttack(Collider enemyCollider)
 >>>>>>> parent of fcd6ea9... Added turret turning
-    {
-
-        float dist = Vector3.Distance(eb.projectilePos, eb.enemyPos);
-
-        if (dist < 5)
-        {
-            Debug.Log("Projectile collided with enemy...");
-
-            //damage
-            if (eb.enemyHP > 0)
-            {
-                eb.enemyHP -= 10;
-                Debug.Log("Enemy damaged... " + eb.enemyHP);
-            }
-
-            //death
-            else
-            {
-                Object.Destroy(eb.enemy);
-                Debug.Log("Enemy dead " + eb.enemyHP);
-                eb.coinCount.text += 20;
-                eb.enemySO.isDead = true;
-            }
-
-            Object.Destroy(eb.projectilePrefab);
-        }
+=======
     }
 
-    void TurretAttack()
+    public void DoAttack(Collider enemyCollider)
+>>>>>>> parent of eab6e3b... Fixed wave manager, added timer with funcitonality in UI
     {
-        eb.enemyPos = eb.enemy.transform.position;
-        eb.turretPos = eb.turret.transform.position;
+        //spawn a projectile
+        GameObject myPrefab = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
 
-        Instantiate(eb.projectilePrefab, eb.turretPos, Quaternion.identity);
-        eb.projectileRB = GetComponent<Rigidbody>();
-        eb.projectileRB.AddForce(new Vector3(Random.Range(eb.projectileSpeedLow, eb.projectileSpeedHigh), Random.Range(eb.projectileSpeedLow, eb.projectileSpeedHigh)), ForceMode.Impulse);
-        eb.projectilePrefab.transform.position = eb.enemyPos;
-        Debug.Log("Turret attacking...");
+        //fire at enemy
+        Rigidbody rb = myPrefab.GetComponent<Rigidbody>();
+        myPrefab.transform.position = Vector3.MoveTowards(myPrefab.transform.position, enemyCollider.transform.position, 3);
     }
+
+
 }
