@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7297078708775981817}
   - component: {fileID: 4027742571409557673}
   - component: {fileID: 1865891271899454630}
-  - component: {fileID: 8378485255192668601}
   - component: {fileID: 5745578349357247695}
+  - component: {fileID: 170651870443586301}
   - component: {fileID: -2354883553379220937}
   m_Layer: 0
   m_Name: Projectile
@@ -81,21 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8378485255192668601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8401937580093590638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b877e2b72a162d748a0fd8ce8823e6f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetEnemy: {fileID: 0}
-  turret: {fileID: 5889493634245031223, guid: a42559caa7380624d8305f25198d951e, type: 3}
-  turretScript: {fileID: 0}
 --- !u!136 &5745578349357247695
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -110,6 +95,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &170651870443586301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401937580093590638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30435f2304526b74babc15b633974b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEnemy: {fileID: 0}
+  turret: {fileID: 0}
+  turretScript: {fileID: 0}
 --- !u!54 &-2354883553379220937
 Rigidbody:
   m_ObjectHideFlags: 0

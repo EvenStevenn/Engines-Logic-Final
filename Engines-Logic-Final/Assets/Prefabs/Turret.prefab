@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPoint: {fileID: 7689275118988763853}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
+    type: 3}
   bulletRB: {fileID: 0}
   enemy: {fileID: 0}
   enemyPos: {x: 0, y: 0, z: 0}

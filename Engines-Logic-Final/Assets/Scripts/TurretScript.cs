@@ -7,6 +7,13 @@ public class TurretScript : MonoBehaviour
     bool carryingTurret;
     public GameObject playerTurretHolder;
 
+    public Transform projectileSpawnPoint;
+    public GameObject bulletPrefab;
+    public Rigidbody bulletRB;
+    public GameObject enemy;
+    public Vector3 enemyPos;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +50,5 @@ public class TurretScript : MonoBehaviour
             }
         }
 
-    }
+    } 
 }

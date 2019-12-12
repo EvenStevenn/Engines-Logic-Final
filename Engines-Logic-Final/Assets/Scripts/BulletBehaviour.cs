@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BulletBehaviour : MonoBehaviour
 {
     public GameObject targetEnemy;
     public GameObject turret;
@@ -10,7 +10,8 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        turretScript = turret.GetComponent<TurretBehaviour>();   
+        turret = GameObject.FindGameObjectWithTag("Turret");
+        turretScript = turret.GetComponent<TurretBehaviour>();
     }
 
     // Update is called once per frame

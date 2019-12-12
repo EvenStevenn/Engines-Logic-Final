@@ -4,46 +4,49 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
 {
-    public Transform projectileSpawnPoint;
-    public GameObject bulletPrefab;
-    public Rigidbody bulletRB;
-    public GameObject enemy;
     public Vector3 enemyPos;
+    public Vector3 targetPos;
+    public GameObject enemy;
+    float range = 5;
+    public GameObject waveManager;
+    public WaveManager waveManagerScript;
 
 
-
-    private void Start()
+    private void Awake()
     {
-          //bulletRB = bulletPrefab.GetComponent<Rigidbody>();
-        
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager");
+        waveManagerScript = waveManager.GetComponent<WaveManager>();
     }
 
     private void Update()
     {
-
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //turn turret to an enemy in range
-<<<<<<< HEAD
-        if (other.tag == "Enemy")
-=======
-        if (myCollider.CompareTag("Enemy"))
->>>>>>> 1605845d3833a445cd00a90ac0e75b6d3fa8f679
+        RaycastHit hit;
+        if (Physics.Linecast (this.gameObject.transform.position, enemyPos, out hit))
         {
-            gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - this.gameObject.transform.position);
-            enemyPos = other.transform.position;
-            StartCoroutine(DoAttack((other)));
+            Debug.Log("EH");
+            Destroy(enemy);
+            waveManagerScript.waveSO.deadEnemyCount++;
+            Debug.Log(waveManagerScript.waveSO.deadEnemyCount);
         }
     }
-    
-    public IEnumerator DoAttack (Collider enemyCollider)
-    {
-        bulletPrefab = Instantiate(bulletPrefab, projectileSpawnPoint.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(1.0f);
+    public void OnTriggerStay(Collider other)
+    {
+        //turn turret to an enemy in range
+        if (other.tag == "Enemy")
+        {
+            gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - this.gameObject.transform.position);
+            targetPos = this.gameObject.transform.position - other.gameObject.transform.position;
+            enemyPos = other.gameObject.transform.position;
+            enemy = other.gameObject;
+            //StartCoroutine(DoAttack((other)));
+        }
+    }
+
+    public IEnumerator DoAttack(Collider enemyCollider)
+    {
         
+        yield return new WaitForSeconds(1.0f);
+
     }
 }

@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Turret
   - TowerTile
   - Enemy
   - Projectile
@@ -14,6 +13,7 @@ TagManager:
   - WaveManager
   - WaveNumber
   - Bullet
+  - Turret
   layers:
   - Default
   - TransparentFX

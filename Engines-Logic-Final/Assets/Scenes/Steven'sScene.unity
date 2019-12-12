@@ -1098,6 +1098,8 @@ MonoBehaviour:
   waveTimerScript: {fileID: 0}
   waveNumberObj: {fileID: 0}
   waveNumber: {fileID: 0}
+  finalWaypoint: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &741894647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390068987830596885, guid: 530250c53728e1d4e92e9c0ca1a7d248,
@@ -1510,6 +1512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 5889493634245031223, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 5889493634245031226, guid: a42559caa7380624d8305f25198d951e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1565,18 +1572,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e,
+    - target: {fileID: 5889493634245031224, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: projectileSpawnPoint
+      value: 
+      objectReference: {fileID: 906449119}
+    - target: {fileID: 5889493634245031224, guid: a42559caa7380624d8305f25198d951e,
         type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
         type: 3}
-    - target: {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e,
+    - target: {fileID: 5889493634245031224, guid: a42559caa7380624d8305f25198d951e,
         type: 3}
-      propertyPath: projectileSpawnPoint
-      value: 
-      objectReference: {fileID: 906449119}
-    m_RemovedComponents: []
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889493635602096650, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889493634109257168, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5889493634109257170, guid: a42559caa7380624d8305f25198d951e, type: 3}
+    - {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e, type: 3}
+    - {fileID: 3803303786048950434, guid: a42559caa7380624d8305f25198d951e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42559caa7380624d8305f25198d951e, type: 3}
 --- !u!1 &995119077 stripped
 GameObject:
@@ -2771,6 +2796,58 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4390068988166642914}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1324224645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5889493634245031223, guid: a42559caa7380624d8305f25198d951e,
+    type: 3}
+  m_PrefabInstance: {fileID: 994990209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1324224649
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324224645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1324224650
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324224645}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &1324224651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324224645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a22b801a33a18f44beb401a543da246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  enemy: {fileID: 0}
+  waveManager: {fileID: 741071740}
+  waveManagerScript: {fileID: 741071742}
 --- !u!1 &1328695258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4390068989390478136, guid: 530250c53728e1d4e92e9c0ca1a7d248,
@@ -3293,7 +3370,8 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 963194225}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5565159658677059392, guid: 16964354e2ec44242a9469ea15e63c7e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 16964354e2ec44242a9469ea15e63c7e, type: 3}
 --- !u!1 &1605103571 stripped
 GameObject:
@@ -6612,6 +6690,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770927544980809439, guid: 33d10a8a612b14f4db63b33a19222d4a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.200012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770927544980809439, guid: 33d10a8a612b14f4db63b33a19222d4a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.600098
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33d10a8a612b14f4db63b33a19222d4a, type: 3}

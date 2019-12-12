@@ -30,6 +30,7 @@ public class WaveManager : MonoBehaviour
     public GameObject finalWaypoint;
     public GameObject gameManager;
 
+
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
@@ -49,13 +50,13 @@ public class WaveManager : MonoBehaviour
         
 
         //Lose game condition
-        foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
+       /* foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
         {
             if(singleEnemy.enemyPrefab.transform.position == finalWaypoint.transform.position)
             {
 
             }
-        }
+        }*/
     }
 
     [ContextMenu("Spawn Wave")]
