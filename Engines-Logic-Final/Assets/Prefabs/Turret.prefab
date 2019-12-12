@@ -138,9 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a22b801a33a18f44beb401a543da246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eb: {fileID: 0}
-  forRotation: {fileID: 5889493634109257168}
-  projectileSpawnPoint: {fileID: 0}
+  projectilePrefab: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
+    type: 3}
+  projectileSpawnPoint: {fileID: 7689275118988763853}
 --- !u!1 &5889493634245031223
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,9 +152,10 @@ GameObject:
   - component: {fileID: 5889493634245031226}
   - component: {fileID: 5889493634245031225}
   - component: {fileID: 5889493634245031224}
+  - component: {fileID: 1503593185}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +201,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurretHolder: {fileID: 0}
+--- !u!114 &1503593185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5889493634245031223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a22b801a33a18f44beb401a543da246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
+    type: 3}
+  projectileSpawnPoint: {fileID: 0}
 --- !u!1 &5889493634290352599
 GameObject:
   m_ObjectHideFlags: 0

@@ -3089,11 +3089,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 5889493634245031223, guid: a42559caa7380624d8305f25198d951e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Turret
-      objectReference: {fileID: 0}
     - target: {fileID: 5889493634245031226, guid: a42559caa7380624d8305f25198d951e,
         type: 3}
       propertyPath: m_LocalPosition.x
