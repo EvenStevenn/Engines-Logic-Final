@@ -59268,11 +59268,6 @@ PrefabInstance:
       objectReference: {fileID: 963194228}
     - target: {fileID: 2781989447719907873, guid: e3cb18012ee6ad04d8011bc1583125fd,
         type: 3}
-      propertyPath: playerSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781989447719907873, guid: e3cb18012ee6ad04d8011bc1583125fd,
-        type: 3}
       propertyPath: groundMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
