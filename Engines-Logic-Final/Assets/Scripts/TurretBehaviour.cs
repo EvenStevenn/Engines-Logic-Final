@@ -17,6 +17,15 @@ public class TurretBehaviour : MonoBehaviour
         }
     }
 
+    public void OnTriggerStay(Collider myCollider)
+    {
+        if (myCollider.tag == "Enemy")
+        {
+            //have turret follow the enemy
+            forRotation.transform.rotation = Quaternion.LookRotation(myCollider.transform.position);
+        }
+    }
+
     public void DoAttack(Collider enemyCollider)
     {
         //spawn a projectile

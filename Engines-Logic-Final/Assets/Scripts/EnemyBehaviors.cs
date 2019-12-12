@@ -97,5 +97,5 @@ public class EnemyBehaviors : MonoBehaviour
     //    //enemyPos.y = +1;
     //    projectilePrefab.transform.position = enemyPos;
     //    Debug.Log("Turret attacking...");
-    }
+    //}
 }
