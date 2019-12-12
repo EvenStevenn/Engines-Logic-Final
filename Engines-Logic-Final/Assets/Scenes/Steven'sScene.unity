@@ -828,6 +828,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1570350072}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &516734418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516734416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a22b801a33a18f44beb401a543da246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPoint: {fileID: 2043992918}
+  bulletPrefab: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
+    type: 3}
+  bulletRB: {fileID: 0}
+  enemy: {fileID: 0}
+  enemyPos: {x: 0, y: 0, z: 0}
 --- !u!54 &516734422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3171,12 +3189,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 4.61
       objectReference: {fileID: 0}
+    - target: {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: projectileSpawnPoint
+      value: 
+      objectReference: {fileID: 2043992918}
+    - target: {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 8401937580093590638, guid: a97527d4635e76242831575601219a51,
+        type: 3}
+    - target: {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e,
+        type: 3}
+      propertyPath: bulletRB
+      value: 
+      objectReference: {fileID: -2354883553379220937, guid: a97527d4635e76242831575601219a51,
+        type: 3}
     - target: {fileID: 1503593185, guid: a42559caa7380624d8305f25198d951e, type: 3}
       propertyPath: projectileSpawnPoint
       value: 
       objectReference: {fileID: 2043992918}
     m_RemovedComponents:
     - {fileID: 1503593185, guid: a42559caa7380624d8305f25198d951e, type: 3}
+    - {fileID: 2922210249371854454, guid: a42559caa7380624d8305f25198d951e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a42559caa7380624d8305f25198d951e, type: 3}
 --- !u!1 &1571478045 stripped
 GameObject:
