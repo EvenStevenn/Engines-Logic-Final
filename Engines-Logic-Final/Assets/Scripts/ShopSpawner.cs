@@ -12,6 +12,7 @@ public class ShopSpawner : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            //flag grants ability to buy turrets when in shop range
             Debug.Log("within range of shop");
             canSpawn = true;
         }
@@ -21,6 +22,7 @@ public class ShopSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //flag removes ability to buy turrets when out of shop range
             Debug.Log("out of shop range");
             canSpawn = false;
         }
@@ -28,9 +30,12 @@ public class ShopSpawner : MonoBehaviour
 
     public void Update()
     {
+        //check if player wants to buy turret
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("pressed e");
+
+            //check if player is within proper range
             if (canSpawn)
             {
                 SpawnTurret();
@@ -40,10 +45,7 @@ public class ShopSpawner : MonoBehaviour
 
     public void SpawnTurret()
     {
+        //instantiate a new turret at its spawnpoint
         Instantiate(turret, turretSpawnPoint.transform.position, Quaternion.identity);
-        //GameObject myTurret = Instantiate<GameObject>(turret, other.transform);
-        //float myY = myTurret.transform.position.y;
-        //myY += 0.5f;
-        //myTurret.transform.Translate(other.transform.position.x, myY, other.transform.position.z);
     }
 }
