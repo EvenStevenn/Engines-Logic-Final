@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     public Button mainmenuButton;
     public GameObject pauseMenu;
+    public GameObject gamewinMenu;
+    public GameObject gameoverMenu;
     public GameObject inGameHUD;
     public GameObject mainCam;
     public string mainScene;
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public ScriptableObject enemy;
 
+
+    //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeSelf)
@@ -74,5 +78,25 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("Game is resumed.");
         mainCam.SetActive(true);
+    }
+
+    //Activate Victory Screem
+    public void VictoryScreen()
+    {
+        Time.timeScale = 0f;
+        gamewinMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Debug.Log("Level cleared. You win!");
+        mainCam.SetActive(false);
+    }
+
+    //Activate LoseScreen
+    public void LossScreen()
+    {
+        Time.timeScale = 0f;
+        gameoverMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Debug.Log("Level failed. You lose!");
+        mainCam.SetActive(false);
     }
 }
