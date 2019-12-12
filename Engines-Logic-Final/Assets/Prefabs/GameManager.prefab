@@ -49,12 +49,13 @@ MonoBehaviour:
   restartButton: {fileID: 0}
   mainmenuButton: {fileID: 0}
   pauseMenu: {fileID: 0}
+  gamewinMenu: {fileID: 0}
+  gameoverMenu: {fileID: 0}
   inGameHUD: {fileID: 0}
   mainCam: {fileID: 0}
-  mainScene: Skye'sScene
+  mainScene: Steven'sScene
   mainmenuScene: MainMenuScene
   paused: 0
-  enemy: {fileID: 0}
 --- !u!114 &6405616212611851082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +73,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5813225714587759269, guid: a97527d4635e76242831575601219a51,
     type: 3}
   enemySO: {fileID: 11400000, guid: 2f283377831e2974d883505487127473, type: 2}
-  coincount: {fileID: 0}
+  coinCount: {fileID: 0}
   countdown: {fileID: 0}
+  enemyPos: {x: 0, y: 0, z: 0}
+  turretPos: {x: 0, y: 0, z: 0}
+  projectilePos: {x: 0, y: 0, z: 0}
+  speed: 1
+  enemyHP: 0
+  coinAmount: 1
   shootFrom: {fileID: 0}
+  projectileRB: {fileID: 0}
   projectileSpeedHigh: 5
   projectileSpeedLow: 20
