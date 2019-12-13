@@ -56,24 +56,26 @@ public class WaveManager : MonoBehaviour
         WaveStatusCheck();
 
 
-        //Lose game condition
-        foreach (WaveSO waveSO in listOfAvailableWaves)
-        {
-            foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
-            {
+        ////Lose game condition
+        //foreach (WaveSO waveSO in listOfAvailableWaves)
+        //{
+        //    foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
+        //    {
                 
-                if (singleEnemy.enemyPrefab.transform.position == finalWaypoint.transform.position)
-                {
-                    mainCam = Camera.main;
-                    Time.timeScale = 0f;
-                    gameoverMenu.SetActive(true);
-                    Cursor.lockState = CursorLockMode.None;
-                    Debug.Log("Level failed. You lose!");
-                    mainCam.enabled = false;
-                }
-            }
-        }
+        //        if (singleEnemy.enemyPrefab.transform.position == finalWaypoint.transform.position)
+        //        {
+        //            mainCam = Camera.main;
+        //            Time.timeScale = 0f;
+        //            gameoverMenu.SetActive(true);
+        //            Cursor.lockState = CursorLockMode.None;
+        //            Debug.Log("Level failed. You lose!");
+        //            mainCam.enabled = false;
+        //        }
+        //    }
+        //}
     }
+
+
 
     [ContextMenu("Spawn Wave")]
     public IEnumerator SpawnEnemies()
@@ -156,7 +158,18 @@ public class WaveManager : MonoBehaviour
             }
     }
 
-    
+    public void ResetWaveState()
+    {
+        foreach(WaveSO wave in listOfAvailableWaves)
+        {
+            if (wave.waveID == 0)
+            {
+                wave.waveState = WaveState.available;
+            }
+            else
+                wave.waveState = WaveState.unavailable;
+        }
+    }
 
     [ContextMenu("Debug: Increase DeathCount")]
     public void DebugTestIncreaseDeathcount()
@@ -171,3 +184,5 @@ public class WaveManager : MonoBehaviour
         }
     }
 }
+
+

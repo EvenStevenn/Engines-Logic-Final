@@ -28,7 +28,7 @@ public class TurretBehaviour : MonoBehaviour
             Destroy(enemy);
             audioManager.PlayEnemyDeathSound();
             waveManagerScript.CheckForEnemies();
-            //Debug.Log(waveManagerScript.waveSO.deadEnemyCount);
+            
         }
     }
 
