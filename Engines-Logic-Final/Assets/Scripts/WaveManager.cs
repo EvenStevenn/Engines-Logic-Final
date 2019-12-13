@@ -6,7 +6,7 @@ using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
-    public EnemySO enemySO;
+    
     public WaveSO waveSO;
 
     public List<ScriptableObject> listOfAvailableWaves;
@@ -30,6 +30,7 @@ public class WaveManager : MonoBehaviour
 
     public GameObject finalWaypoint;
     public GameObject gameManager;
+    public GameManager GM;
 
     public AudioManager audioManager;
 
@@ -46,6 +47,9 @@ public class WaveManager : MonoBehaviour
         waveNumberObj = GameObject.FindGameObjectWithTag("WaveNumber");
         waveNumber = waveNumberObj.GetComponent<TextMeshProUGUI>();
         waveNumber.text = (waveID + 1).ToString();
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GM = gameManager.GetComponent<GameManager>();
     }
 
 
@@ -81,15 +85,15 @@ public class WaveManager : MonoBehaviour
     {
         foreach (WaveSO waveSO in listOfAvailableWaves)
         {
-            if (waveSO.waveState == WaveState.available && waveSO.deadEnemyCount == 0)
+            if (waveSO.waveState == WaveState.available)
             {
                 waveSO.waveState = WaveState.attacking;
-                foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
+                foreach (GameObject singleEnemy in waveSO.ListOfEnemies)
                 {
                     if (waveSO.waveState == WaveState.attacking)
                     {
-                        Instantiate(singleEnemy.enemyPrefab);
-                        singleEnemy.enemyPrefab.transform.position = enemySpawnPoint.position;
+                        Instantiate(singleEnemy);
+                        singleEnemy.transform.position = enemySpawnPoint.position;
                         audioManager.PlayEnemySpawnSound();
                         yield return new WaitForSeconds(timeBetweenEnemies);
                         Debug.Log(waveSO.ListOfEnemies.Count);
@@ -99,49 +103,30 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    /*public IEnumerator WaitTimeBetweenWaves()
-    {
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-    }*/
-
     [ContextMenu("Wave status check")]
     public void WaveStatusCheck()
     {
         foreach (WaveSO waveSO in listOfAvailableWaves)
         {
-            foreach (EnemySO enemySO in waveSO.ListOfEnemies)
+            foreach (GameObject enemy in waveSO.ListOfEnemies)
             {
-                if (enemySO.health <= 0)
-                {
-                    enemySO.isDead = true;
-                    audioManager.PlayEnemyDeathSound();
-                    waveSO.deadEnemyCount++;
-                    //gameManager.
-                }
-                if (waveSO.waveState == WaveState.attacking && waveSO.ListOfEnemies.Count == waveSO.deadEnemyCount)
+                //if (enemySO.health <= 0)
+                //{
+                //    enemySO.isDead = true;
+                //    audioManager.PlayEnemyDeathSound();
+                //    waveSO.deadEnemyCount++;
+                //    //gameManager.
+                //}
+                if (waveSO.waveState == WaveState.attacking && waveSO.ListOfEnemies.Count == GM.deadEnemyCount)
                 {
                     Debug.Log("No enemies in-game, start next wave");
                     waveID++;
                     waveSO.waveState = WaveState.finished;
                     waveTimer.SetActive(true);
                     waveTimerScript.timerStart = true;
+                    GM.deadEnemyCount = 0;
                 }
 
-            }
-        }
-    }
-
-    public void CheckForEnemies()
-    {
-        foreach (WaveSO waveSO in listOfAvailableWaves)
-        {
-            foreach (EnemySO enemySO in waveSO.ListOfEnemies)
-            {
-                if (enemySO.enemyPrefab == null)
-                {
-                    waveSO.deadEnemyCount = waveSO.ListOfEnemies.Count;
-                }
             }
         }
     }
@@ -178,8 +163,8 @@ public class WaveManager : MonoBehaviour
         {
             if (waveSO.waveState == WaveState.attacking)
             {
-                waveSO.deadEnemyCount = waveSO.ListOfEnemies.Count;
-                Debug.Log(waveSO.deadEnemyCount);
+                GM.deadEnemyCount = waveSO.ListOfEnemies.Count;
+                Debug.Log(GM.deadEnemyCount);
             }
         }
     }

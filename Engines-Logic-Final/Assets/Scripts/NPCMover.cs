@@ -5,41 +5,51 @@ using UnityEngine;
 public class NPCMover : MonoBehaviour
 {
     public GameObject waypoint0;
+    
     public Node targetNode;
-    public int speed = 3;
 
-    public EnemySO runningEnemy;
-    public EnemySO walkingEnemy;
+    public string enemyName;
 
-    public GameObject gamewinMenu;
-    public GameObject gameoverMenu;
+    public int enemySpeed;
+    public int enemyHealth;
+    public int numOfCoins;
+
+    public bool isDead;
+    public bool reachedEnd;
+
+
+    public GameObject gameWinMenu;
+    public GameObject gameOverMenu;
     public Camera mainCam;
 
     private void Start()
     {
         waypoint0 = GameObject.FindGameObjectWithTag("waypoint0");
         targetNode = waypoint0.GetComponent<Node>();
-        if(runningEnemy.name == "Running Enemy")
-        {
-            speed = runningEnemy.enemySpeed;
-        }
-        if(walkingEnemy.name == "Walking Enemy")
-        {
-            speed = walkingEnemy.enemySpeed;
-        }
+        gameOverMenu = GameObject.FindGameObjectWithTag("LoseScreen");
+        
+              
+        //if(enemySO.name == "RunningEnemy")
+        //{
+        //    speed = enemySO.enemySpeed;
+        //}
+        //if(enemySO.name == "WalkingEnemy")
+        //{
+        //    speed = enemySO.enemySpeed;
+        //}
     }
 
     private void Update()
     {
-        float step = speed * Time.deltaTime;
+        float step = enemySpeed * Time.deltaTime;
         if(targetNode == null)
         {
-            Time.timeScale = 0f;
-            //gameoverMenu = Get
-            gameoverMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Debug.Log("Level failed. You lose!");
-            mainCam.enabled = false;
+            //Time.timeScale = 0f;
+            //gameOverMenu.SetActive(true);
+            //Cursor.lockState = CursorLockMode.None;
+            //Debug.Log("Level failed. You lose!");
+            //mainCam.enabled = false;
+            Debug.Log("target node is null");
         }
         else
         {

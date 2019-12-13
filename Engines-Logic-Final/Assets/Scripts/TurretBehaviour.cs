@@ -10,13 +10,18 @@ public class TurretBehaviour : MonoBehaviour
     float range = 5;
     public GameObject waveManager;
     public WaveManager waveManagerScript;
+
+    public GameObject gameManager;
+    public GameManager GM;
+
     public AudioManager audioManager;
 
-
-    private void Awake()
+    private void Start()
     {
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
         waveManagerScript = waveManager.GetComponent<WaveManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GM = gameManager.GetComponent<GameManager>();
     }
 
     private void Update()
@@ -26,9 +31,8 @@ public class TurretBehaviour : MonoBehaviour
         {
             Debug.Log("EH");
             Destroy(enemy);
-            audioManager.PlayEnemyDeathSound();
-            waveManagerScript.CheckForEnemies();
-            
+            Debug.Log(GM.deadEnemyCount);
+            audioManager.PlayEnemyDeathSound();           
         }
     }
 
@@ -41,6 +45,7 @@ public class TurretBehaviour : MonoBehaviour
             targetPos = this.gameObject.transform.position - other.gameObject.transform.position;
             enemyPos = other.gameObject.transform.position;
             enemy = other.gameObject;
+            GM.deadEnemyCount++;
             //StartCoroutine(DoAttack((other)));
         }
     }

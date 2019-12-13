@@ -10,7 +10,7 @@ public class EnemyBehaviors : MonoBehaviour
     public GameObject enemy;
     public GameObject projectilePrefab;
 
-    public EnemySO enemySO;
+    
 
     public TextMeshProUGUI coinCount;
     public TextMeshProUGUI countdown;

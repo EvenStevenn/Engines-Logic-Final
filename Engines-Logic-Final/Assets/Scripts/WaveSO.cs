@@ -16,7 +16,7 @@ public class WaveSO : ScriptableObject
 {
     //public List<ScriptableObject> ListOfEnemiesinWave;
 
-    public List<EnemySO> ListOfEnemies = new List<EnemySO>();
+    public List<GameObject> ListOfEnemies = new List<GameObject>();
     public int waveID;
     public WaveState waveState;
     public int deadEnemyCount = 0;

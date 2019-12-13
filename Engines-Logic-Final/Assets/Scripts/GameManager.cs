@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public string mainmenuScene;
     public bool paused;
 
+    public int deadEnemyCount;
+
   
     //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
