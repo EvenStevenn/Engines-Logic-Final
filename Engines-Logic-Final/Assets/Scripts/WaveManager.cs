@@ -33,10 +33,9 @@ public class WaveManager : MonoBehaviour
 
     public AudioManager audioManager;
 
-    public GameObject gamewinMenu;
-    public GameObject gameoverMenu;
 
-    public Camera mainCam;
+
+    
 
     private void Start()
     {
@@ -118,6 +117,7 @@ public class WaveManager : MonoBehaviour
                     enemySO.isDead = true;
                     audioManager.PlayEnemyDeathSound();
                     waveSO.deadEnemyCount++;
+                    //gameManager.
                 }
                 if (waveSO.waveState == WaveState.attacking && waveSO.ListOfEnemies.Count == waveSO.deadEnemyCount)
                 {
