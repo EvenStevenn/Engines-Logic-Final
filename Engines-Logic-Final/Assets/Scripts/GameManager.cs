@@ -21,22 +21,7 @@ public class GameManager : MonoBehaviour
     public string mainmenuScene;
     public bool paused;
 
-    //public static GameManager instance = null;
-
-    //private void Awake()
-    //{
-    //    if (instance = null)
-    //    {
-    //        instance = this;
-    //    }
-    //    else if (instance != this)
-    //    {
-    //        Destroy(this);
-    //    }
-
-    //    DontDestroyOnLoad(this);
-    //}
-
+  
     //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
     {
