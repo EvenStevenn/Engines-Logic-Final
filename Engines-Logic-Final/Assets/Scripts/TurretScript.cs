@@ -60,23 +60,27 @@ public class TurretScript : MonoBehaviour
         }
 
         // looks at closest target
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.position - bulletSpawnPoint.transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(turretHead.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         turretHead.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
 
-        /*if (Physics.Linecast(transform.position, target.transform.position))
-        {
-            Debug.DrawRay(transform.position, target.transform.position, Color.green);
-            Debug.Log("Hit");
-        }*/
 
-
-        if (fireCountdown <= 0f)
+        Debug.DrawRay(bulletSpawnPoint.transform.position, transform.TransformDirection(dir), Color.green);
+        RaycastHit hit;
+        if (Physics.Raycast(bulletSpawnPoint.position, transform.TransformDirection(dir), out hit, Mathf.Infinity))
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            if (hit.collider.gameObject.tag == "Enemy")
+            {
+                Debug.Log("Hit");
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+            }
         }
+
 
         fireCountdown -= Time.deltaTime;           
     }
