@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Debug.Log("Game is paused.");
-        mainCam.SetActive(false);
+        mainCam.GetComponent<CameraScript>().enabled = false;
     }
 
     //Resume game/camera re-enable function
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         Debug.Log("Game is resumed.");
-        mainCam.SetActive(true);
+        mainCam.GetComponent<CameraScript>().enabled = true;
     }
 
     //Activate Victory Screem

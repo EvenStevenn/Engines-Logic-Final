@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
 {
-    public Vector3 enemyPos;
-    public Vector3 targetPos;
     public GameObject enemy;
     float range = 5;
+
     public GameObject waveManager;
     public WaveManager waveManagerScript;
 
@@ -16,44 +15,78 @@ public class TurretBehaviour : MonoBehaviour
 
     public AudioManager audioManager;
 
+    public Vector3 Distance;
+    private Transform target;
+    public float rotationSpeed = 10f;
+
+    public float fireRate = 1f;
+    public float fireCountdown = 0f;
+
     private void Start()
     {
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
         waveManagerScript = waveManager.GetComponent<WaveManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         GM = gameManager.GetComponent<GameManager>();
+
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
     private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Linecast (this.gameObject.transform.position, enemyPos, out hit))
+        //returns if there isn't a target
+        if (target == null)
         {
-            Debug.Log("EH");
-            Destroy(enemy);
-            Debug.Log(GM.deadEnemyCount);
-            audioManager.PlayEnemyDeathSound();           
+            return;
         }
-    }
 
-    public void OnTriggerStay(Collider other)
-    {
-        //turn turret to an enemy in range
-        if (other.tag == "Enemy")
+        //looks at closest target
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp (transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        transform.rotation =  Quaternion.Euler(rotation);
+
+        if (fireCountdown <= 0f)
         {
-            gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - this.gameObject.transform.position);
-            targetPos = this.gameObject.transform.position - other.gameObject.transform.position;
-            enemyPos = other.gameObject.transform.position;
-            enemy = other.gameObject;
-            GM.deadEnemyCount++;
-            //StartCoroutine(DoAttack((other)));
+            Shoot();
+            fireCountdown = 1f / fireRate;
         }
+
+        fireCountdown -= Time.deltaTime;
+
+    //audioManager.PlayEnemyDeathSound();           
     }
 
-    public IEnumerator DoAttack(Collider enemyCollider)
+    //checks and determines the enemy closest to turret
+    void UpdateTarget()
     {
-        
-        yield return new WaitForSeconds(1.0f);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+
+        if (nearestEnemy != null && shortestDistance <= range)
+        {
+            target = nearestEnemy.transform;
+        }
+        else
+        {
+            target = null;
+        }
 
     }
+
+        void Shoot()
+        {
+            Debug.Log("Shoot");
+        }
 }
