@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        Cursor.visible = true;
         Debug.Log("Game is paused.");
         mainCam.GetComponent<CameraScript>().enabled = false;
         canPause = false;
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
         Debug.Log("Game is resumed.");
         mainCam.GetComponent<CameraScript>().enabled = true;
         canPause = true;
@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gamewinMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Debug.Log("Level cleared. You win!");
         mainCam.GetComponent<CameraScript>().enabled = false;
         canPause = false;
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameoverMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Debug.Log("Level failed. You lose!");
         mainCam.GetComponent<CameraScript>().enabled = false;
 
