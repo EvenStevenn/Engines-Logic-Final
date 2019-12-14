@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     public bool carryingTurret;
     public GameObject playerTurretHolder;
 
+    [Header("Player Values")]
     public float playerSpeed = 2.0f;
     public float diagPlayerSpeed = 1.0f;
     public float straightPlayerSpeed = 2.0f;
@@ -16,9 +17,12 @@ public class PlayerScript : MonoBehaviour
     public float groundDistance = 0.4f;
     public float gravity = -9.8f;
     float turnSmoothVelocity;
-
     public Transform cameraTransform;
     public Transform groundCheck;
+
+    [Header("Turret Script Refernece")]
+    public GameObject turret;
+    public TurretScript TS;
 
     [Header("References for the character controller to function")]
     public CharacterController controller;
@@ -42,6 +46,10 @@ public class PlayerScript : MonoBehaviour
 
         // Start-up for turret pick-up functionality
         carryingTurret = false;
+
+        // Gets reference to turret
+        turret = GameObject.FindGameObjectWithTag("Turret");
+        TS = turret.GetComponent<TurretScript>();
     }
 
     void Update()
@@ -90,6 +98,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Turret")
         {
             carryingTurret = true;
+            TS.canShoot = false;
             other.gameObject.transform.SetParent(playerTurretHolder.transform);
             other.gameObject.transform.position = playerTurretHolder.transform.position;
             other.gameObject.transform.rotation = playerTurretHolder.transform.rotation;

@@ -23,6 +23,7 @@ public class TurretScript : MonoBehaviour
     public Vector3 Distance;
     public GameObject turretHead;
     public Transform raycastDirection;
+    public bool canShoot;
 
     [Header("Turret Attributes")]
     public float range = 5;
@@ -52,6 +53,17 @@ public class TurretScript : MonoBehaviour
 
     private void Update()
     {
+        if (gameObject.transform.parent.CompareTag("TowerTile"))
+        {
+            canShoot = true;
+            Debug.Log("Turret status, canShoot = " + canShoot);
+        }
+        else
+        {
+            canShoot = false;
+            Debug.Log("Turret status, canShoot = " + canShoot);
+        }
+
         // returns if there isn't a target
         if (target == null)
         {
@@ -65,10 +77,10 @@ public class TurretScript : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(turretHead.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         turretHead.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
 
-
-        Debug.DrawRay(bulletSpawnPoint.transform.position, transform.TransformDirection(dir), Color.green);
+        // Raycasts to see if turret's bullet will hit an enemy
+        Debug.DrawRay(bulletSpawnPoint.transform.position, (target.transform.position - bulletSpawnPoint.transform.position), Color.green);
         RaycastHit hit;
-        if (Physics.Raycast(bulletSpawnPoint.position, transform.TransformDirection(dir), out hit, Mathf.Infinity))
+        if (Physics.Raycast(bulletSpawnPoint.position, (target.transform.position - bulletSpawnPoint.transform.position), out hit, Mathf.Infinity))
         {
             if (hit.collider.gameObject.tag == "Enemy")
             {
@@ -81,8 +93,9 @@ public class TurretScript : MonoBehaviour
             }
         }
 
-
-        fireCountdown -= Time.deltaTime;           
+        // Turret shooting countdown
+        fireCountdown -= Time.deltaTime;
+        
     }
 
     // Finds the closest target based on distance to turret
@@ -120,10 +133,9 @@ public class TurretScript : MonoBehaviour
         {
             if (other.gameObject.transform.childCount < 1)
             {
-            gameObject.transform.SetParent(other.transform);
-            gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
-            playerScript.carryingTurret = false;
-            Debug.Log("Placed Turret Down");
+                gameObject.transform.SetParent(other.transform);
+                gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
+                playerScript.carryingTurret = false;
             }
         }
     }
@@ -131,15 +143,16 @@ public class TurretScript : MonoBehaviour
     // Spawns a bullet at the spawn position
     void Shoot()
     {
-        
-
-        Debug.Log("Shoot");
-        GameObject bullet = (GameObject) Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+        if (canShoot)
+        {
+            Debug.Log("Shoot");
+            GameObject bullet = (GameObject) Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            BulletScript bulletScript = bullet.GetComponent<BulletScript>();
 
         if (bullet != null)
         {
             bulletScript.AssignTarget(target);
+        }
         }
     }
 }

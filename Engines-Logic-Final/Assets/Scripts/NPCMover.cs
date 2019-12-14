@@ -58,6 +58,7 @@ public class NPCMover : MonoBehaviour
         {
             Destroy(gameObject);
             GM.lives--;
+            GM.deadEnemyCount++;
             Debug.Log(GM.lives);
             if (GM.lives <= 1)
             {
