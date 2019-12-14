@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6405616212611851082}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +56,10 @@ MonoBehaviour:
   mainScene: MasterScene
   mainmenuScene: MainMenuScene
   paused: 0
+  playerCoinDisplay: {fileID: 0}
+  deadEnemyCount: 0
+  lives: 3
+  playerCurrency: 0
 --- !u!114 &6405616212611851082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +76,6 @@ MonoBehaviour:
   enemy: {fileID: 0}
   projectilePrefab: {fileID: 5813225714587759269, guid: a97527d4635e76242831575601219a51,
     type: 3}
-  enemySO: {fileID: 0}
   coinCount: {fileID: 0}
   countdown: {fileID: 0}
   enemyPos: {x: 0, y: 0, z: 0}

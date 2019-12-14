@@ -15,11 +15,14 @@ public class TurretScript : MonoBehaviour
     public GameObject playerObj;
     public PlayerScript playerScript;
 
+
+
     [Header("Turret references")]
     public GameObject enemy;
     private Transform target;
     public Vector3 Distance;
     public GameObject turretHead;
+    public Transform raycastDirection;
 
     [Header("Turret Attributes")]
     public float range = 5;
@@ -45,7 +48,6 @@ public class TurretScript : MonoBehaviour
 
         // Call the update target functionality every 0.5 seconds
         InvokeRepeating("UpdateTurretTarget", 0f, 0.5f);
-
     }
 
     private void Update()
@@ -54,6 +56,7 @@ public class TurretScript : MonoBehaviour
         if (target == null)
         {
             return;
+
         }
 
         // looks at closest target
@@ -61,6 +64,13 @@ public class TurretScript : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(turretHead.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         turretHead.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+
+        /*if (Physics.Linecast(transform.position, target.transform.position))
+        {
+            Debug.DrawRay(transform.position, target.transform.position, Color.green);
+            Debug.Log("Hit");
+        }*/
+
 
         if (fireCountdown <= 0f)
         {
@@ -117,6 +127,8 @@ public class TurretScript : MonoBehaviour
     // Spawns a bullet at the spawn position
     void Shoot()
     {
+        
+
         Debug.Log("Shoot");
         GameObject bullet = (GameObject) Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
