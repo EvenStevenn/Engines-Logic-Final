@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
 {
-    public GameObject enemy;
-    float range = 5;
-
-    public GameObject waveManager;
-    public WaveManager waveManagerScript;
-
+    [Header("References for script's functionality")]
     public GameObject gameManager;
     public GameManager GM;
-
+    public GameObject waveManager;
+    public WaveManager waveManagerScript;
     public AudioManager audioManager;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
 
-    public Vector3 Distance;
+    [Header("Turret references")]
+    public GameObject enemy;
     private Transform target;
-    public float rotationSpeed = 10f;
+    public Vector3 Distance;
 
+    [Header("Turret Attributes")]
+    public float range = 5;
+    public float rotationSpeed = 10f;
     public float fireRate = 1f;
     public float fireCountdown = 0f;
 
@@ -88,5 +90,6 @@ public class TurretBehaviour : MonoBehaviour
         void Shoot()
         {
             Debug.Log("Shoot");
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         }
 }

@@ -22,26 +22,28 @@ public class NPCMover : MonoBehaviour
     public GameObject gameOverMenu;
     public Camera mainCam;
 
+    public GameObject gameManager;
+    public GameManager GM;
+    public GameObject waveManager;
+    public WaveManager waveManagerScript;
+
     private void Start()
     {
         waypoint0 = GameObject.FindGameObjectWithTag("waypoint0");
         targetNode = waypoint0.GetComponent<Node>();
         gameOverMenu = GameObject.FindGameObjectWithTag("LoseScreen");
-        
-              
-        //if(enemySO.name == "RunningEnemy")
-        //{
-        //    speed = enemySO.enemySpeed;
-        //}
-        //if(enemySO.name == "WalkingEnemy")
-        //{
-        //    speed = enemySO.enemySpeed;
-        //}
+
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager");
+        waveManagerScript = waveManager.GetComponent<WaveManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GM = gameManager.GetComponent<GameManager>();
     }
 
     private void Update()
     {
         float step = enemySpeed * Time.deltaTime;
+
+
         if(targetNode == null)
         {
             //Time.timeScale = 0f;
@@ -59,11 +61,24 @@ public class NPCMover : MonoBehaviour
             if (distance == 0f)
             {
                 int newPos = Random.Range(0, targetNode.neighbours.Count);
-                //find a new random position and go to it from your list of neighbors. 
+
+                // Find a new random position and go to it from your list of neighbors. 
                 targetNode = targetNode.neighbours[newPos];
             }
 
         }
 
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+            GM.deadEnemyCount++;
+        }
+
+    }
+
+    public void TakeDamage (int attackValue)
+    {
+        enemyHealth -= attackValue;
+        Debug.Log("Enemy hit, its health is now " + enemyHealth);
     }
 }

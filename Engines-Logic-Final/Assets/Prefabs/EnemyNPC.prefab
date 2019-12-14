@@ -576,13 +576,17 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   enemyName: 
   enemySpeed: 2
-  enemyHealth: 0
-  numOfCoins: 0
+  enemyHealth: 10
+  numOfCoins: 10
   isDead: 0
   reachedEnd: 0
   gameWinMenu: {fileID: 0}
   gameOverMenu: {fileID: 0}
   mainCam: {fileID: 0}
+  gameManager: {fileID: 0}
+  GM: {fileID: 0}
+  waveManager: {fileID: 0}
+  waveManagerScript: {fileID: 0}
 --- !u!95 &-9004779971163595474
 Animator:
   serializedVersion: 3

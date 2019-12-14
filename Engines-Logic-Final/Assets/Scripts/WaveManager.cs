@@ -95,8 +95,7 @@ public class WaveManager : MonoBehaviour
                         Instantiate(singleEnemy);
                         singleEnemy.transform.position = enemySpawnPoint.position;
                         audioManager.PlayEnemySpawnSound();
-                        yield return new WaitForSeconds(timeBetweenEnemies);
-                        Debug.Log(waveSO.ListOfEnemies.Count);
+                        yield return new WaitForSeconds(timeBetweenEnemies);;
                     }
                 }
             }
