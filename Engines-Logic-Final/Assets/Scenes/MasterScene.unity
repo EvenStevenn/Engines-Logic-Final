@@ -37126,6 +37126,9 @@ MonoBehaviour:
   listOfAvailableWaves:
   - {fileID: 11400000, guid: 0d9e3f2c114d9b5429e19b31c87093b0, type: 2}
   - {fileID: 11400000, guid: 48b5b6acf0820ef45a8a642ddb9b97b8, type: 2}
+  - {fileID: 11400000, guid: f87d6fce79bd31e42b8c880349d5e2fc, type: 2}
+  - {fileID: 11400000, guid: 332068dde57eb19498237cbc9fd6dada, type: 2}
+  - {fileID: 11400000, guid: 75a345b6cdb21504ab569e91a525e57d, type: 2}
   enemySpawnPoint: {fileID: 4390068988285306124}
   countdownTimerText: {fileID: 1595346786}
   timeBetweenWaves: 10
@@ -108210,6 +108213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours:
   - {fileID: 4390068988263428215}
+  - {fileID: 4390068989138924629}
 --- !u!23 &4390068988437317078
 MeshRenderer:
   m_ObjectHideFlags: 0
