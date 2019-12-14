@@ -25,18 +25,28 @@ public class NPCMover : MonoBehaviour
     public GameObject gameManager;
     public GameManager GM;
     public GameObject waveManager;
-    public WaveManager waveManagerScript;
+    public WaveManager WM;
+    public GameObject audioManager;
+    public AudioManager AM;
 
     private void Start()
     {
+        // Gets refrence to the first node that the enemy needs to move to
         waypoint0 = GameObject.FindGameObjectWithTag("waypoint0");
         targetNode = waypoint0.GetComponent<Node>();
-        gameOverMenu = GameObject.FindGameObjectWithTag("LoseScreen");
 
+        // Gets reference to the WaveManager
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
-        waveManagerScript = waveManager.GetComponent<WaveManager>();
+        WM = waveManager.GetComponent<WaveManager>();
+
+        // Gets reference to GameManager
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         GM = gameManager.GetComponent<GameManager>();
+
+
+        // Gets reference to AudioManager
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+        AM = audioManager.GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -46,12 +56,13 @@ public class NPCMover : MonoBehaviour
 
         if(targetNode == null)
         {
-            //Time.timeScale = 0f;
-            //gameOverMenu.SetActive(true);
-            //Cursor.lockState = CursorLockMode.None;
-            //Debug.Log("Level failed. You lose!");
-            //mainCam.enabled = false;
-            Debug.Log("target node is null");
+            Destroy(gameObject);
+            GM.lives--;
+            Debug.Log(GM.lives);
+            if (GM.lives <= 1)
+            {
+                GM.LossScreen();
+            }
         }
         else
         {
@@ -70,8 +81,21 @@ public class NPCMover : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            // Deletes the enemy
             Destroy(gameObject);
+
+            // Increase the GameManger's death count
             GM.deadEnemyCount++;
+
+            // Checks the conditions for the wave to end
+            WM.WaveStatusCheck();
+
+            // Plays the death sound of enemy
+            AM.PlayEnemyDeathSound();
+
+            // Increase the player's currency count
+            GM.playerCurrency += numOfCoins;
+            GM.UpdatePlayerCurrencyCount();
         }
 
     }

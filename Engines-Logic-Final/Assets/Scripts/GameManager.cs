@@ -21,9 +21,13 @@ public class GameManager : MonoBehaviour
     public string mainmenuScene;
     public bool paused;
 
-    public int deadEnemyCount;
+    public TextMeshProUGUI playerCoinDisplay;
 
-  
+    public int deadEnemyCount;
+    public int lives = 3;
+
+    public int playerCurrency = 0;
+
     //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
     {
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
         {
             UnPause();
         }
-        
+
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
@@ -89,16 +93,23 @@ public class GameManager : MonoBehaviour
         gamewinMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Debug.Log("Level cleared. You win!");
-        mainCam.SetActive(false);
+        mainCam.GetComponent<CameraScript>().enabled = false;
     }
 
     //Activate LoseScreen
     public void LossScreen()
     {
+
         Time.timeScale = 0f;
         gameoverMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Debug.Log("Level failed. You lose!");
-        mainCam.SetActive(false);
+        mainCam.GetComponent<CameraScript>().enabled = false;
+
+    }
+
+    public void UpdatePlayerCurrencyCount()
+    {
+        playerCoinDisplay.text = playerCurrency.ToString();
     }
 }

@@ -37,49 +37,27 @@ public class WaveManager : MonoBehaviour
 
 
     
-
+    // Starts the first wave and gets all the references to the scripts needed for the WaveManager to function
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
+
+        // Obtaining references for the wave timer
         waveTimer = GameObject.FindGameObjectWithTag("WaveTimer");
         waveTimerScript = waveTimer.GetComponent<Timer>();
         waveTimer.SetActive(false);
+
+        // obtaining references for the UI wave number display
         waveNumberObj = GameObject.FindGameObjectWithTag("WaveNumber");
         waveNumber = waveNumberObj.GetComponent<TextMeshProUGUI>();
         waveNumber.text = (waveID + 1).ToString();
 
+        // Obtaining reference to the GameManager
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         GM = gameManager.GetComponent<GameManager>();
     }
 
-
-
-    void Update()
-    {
-        WaveStatusCheck();
-
-
-        ////Lose game condition
-        //foreach (WaveSO waveSO in listOfAvailableWaves)
-        //{
-        //    foreach (EnemySO singleEnemy in waveSO.ListOfEnemies)
-        //    {
-                
-        //        if (singleEnemy.enemyPrefab.transform.position == finalWaypoint.transform.position)
-        //        {
-        //            mainCam = Camera.main;
-        //            Time.timeScale = 0f;
-        //            gameoverMenu.SetActive(true);
-        //            Cursor.lockState = CursorLockMode.None;
-        //            Debug.Log("Level failed. You lose!");
-        //            mainCam.enabled = false;
-        //        }
-        //    }
-        //}
-    }
-
-
-
+    // Checks which wave is available and spawns the enemies from that particular waveSO
     [ContextMenu("Spawn Wave")]
     public IEnumerator SpawnEnemies()
     {
@@ -102,6 +80,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // Checks if the current wave is finished and increases both the wavemanager's wave ID and wavesFinished counter
     [ContextMenu("Wave status check")]
     public void WaveStatusCheck()
     {
@@ -109,27 +88,30 @@ public class WaveManager : MonoBehaviour
         {
             foreach (GameObject enemy in waveSO.ListOfEnemies)
             {
-                //if (enemySO.health <= 0)
-                //{
-                //    enemySO.isDead = true;
-                //    audioManager.PlayEnemyDeathSound();
-                //    waveSO.deadEnemyCount++;
-                //    //gameManager.
-                //}
                 if (waveSO.waveState == WaveState.attacking && waveSO.ListOfEnemies.Count == GM.deadEnemyCount)
                 {
                     Debug.Log("No enemies in-game, start next wave");
                     waveID++;
+                    wavesFinished++;
                     waveSO.waveState = WaveState.finished;
                     waveTimer.SetActive(true);
                     waveTimerScript.timerStart = true;
                     GM.deadEnemyCount = 0;
                 }
 
+                if (wavesFinished == listOfAvailableWaves.Count)
+                {
+                    GM.VictoryScreen();
+                }
             }
+            
+
         }
+
+
     }
 
+    // Starts the next wave if the wave ID counter in the wavemanager matches the wave ID of the SO
     public void StartNextWave()
     {
             foreach (WaveSO waveSO in listOfAvailableWaves)
@@ -142,6 +124,7 @@ public class WaveManager : MonoBehaviour
             }
     }
 
+    // Resets the game's wave states
     public void ResetWaveState()
     {
         foreach(WaveSO wave in listOfAvailableWaves)
@@ -155,6 +138,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // Debug method to increase the death count of the current wave
     [ContextMenu("Debug: Increase DeathCount")]
     public void DebugTestIncreaseDeathcount()
     {

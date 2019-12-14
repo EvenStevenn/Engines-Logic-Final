@@ -265,7 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9225c1fad512f0f4683427b07e54df01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 2301066083274310245}
+  carryingTurret: 0
+  playerTurretHolder: {fileID: 2781989447422835836}
   playerSpeed: 2
   diagPlayerSpeed: 1
   straightPlayerSpeed: 2
@@ -274,11 +275,8 @@ MonoBehaviour:
   groundDistance: 0.4
   gravity: -9.8
   cameraTransform: {fileID: 0}
-  turretHolder: {fileID: 2781989447422835835}
   groundCheck: {fileID: 7453317728511741514}
-  turret: {fileID: 0}
-  turretRB: {fileID: 0}
-  hasTurret: 0
+  controller: {fileID: 2301066083274310245}
   groundMask:
     serializedVersion: 2
     m_Bits: 0

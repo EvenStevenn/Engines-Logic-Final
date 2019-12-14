@@ -16,6 +16,7 @@ TagManager:
   - Turret
   - LoseScreen
   - GameManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

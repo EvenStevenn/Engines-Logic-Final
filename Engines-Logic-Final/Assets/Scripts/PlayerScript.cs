@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public CharacterController controller;
+    [Header("Turret's References for Carrying")]
+    public bool carryingTurret;
+    public GameObject playerTurretHolder;
 
     public float playerSpeed = 2.0f;
     public float diagPlayerSpeed = 1.0f;
@@ -18,20 +20,28 @@ public class PlayerScript : MonoBehaviour
     public Transform cameraTransform;
     public Transform groundCheck;
 
-    public bool hasTurret;
+    [Header("References for the character controller to function")]
+    public CharacterController controller;
     bool isGrounded;
-
     public LayerMask groundMask;
+
 
     public Vector3 velocity;
 
 
     void Start()
     {
+        // Disables cursor
         Cursor.visible = false;
+
+        // Assigns the camera variable to the main camera
         cameraTransform = Camera.main.transform;
-        hasTurret = false;
+
+        // Assigns the stright speed to the player's speed
         float straightPlayerSpeed = playerSpeed;
+
+        // Start-up for turret pick-up functionality
+        carryingTurret = false;
     }
 
     void Update()
@@ -71,6 +81,19 @@ public class PlayerScript : MonoBehaviour
         {
             playerSpeed = straightPlayerSpeed;
             //Debug.Log(playerSpeed);
+        }
+    }
+
+    // Checks for player to be within radius before being picked up
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Turret")
+        {
+            carryingTurret = true;
+            other.gameObject.transform.SetParent(playerTurretHolder.transform);
+            other.gameObject.transform.position = playerTurretHolder.transform.position;
+            other.gameObject.transform.rotation = playerTurretHolder.transform.rotation;
+            Debug.Log("player has picked up turret");
         }
     }
 }

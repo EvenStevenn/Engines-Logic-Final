@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    [Header("Turret's References for Carrying")]
-    bool carryingTurret;
-    public GameObject playerTurretHolder;
-
     [Header("References for script's functionality")]
     public GameObject gameManager;
     public GameManager GM;
@@ -16,6 +12,8 @@ public class TurretScript : MonoBehaviour
     public AudioManager audioManager;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
+    public GameObject playerObj;
+    public PlayerScript playerScript;
 
     [Header("Turret references")]
     public GameObject enemy;
@@ -32,13 +30,16 @@ public class TurretScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Start-up for turret pick-up functionality
-        carryingTurret = false;
-        playerTurretHolder = GameObject.FindGameObjectWithTag("PlayerTurretHolder");
-        
-        // Obtaining references to wavemanager and gamemanager scripts
+        // Obtaining references to Player
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        playerScript = playerObj.GetComponent<PlayerScript>();
+
+        // Obtaining references to WaveManager
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
         waveManagerScript = waveManager.GetComponent<WaveManager>();
+
+
+        // Obtaining references to GameManager 
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         GM = gameManager.GetComponent<GameManager>();
 
@@ -67,34 +68,7 @@ public class TurretScript : MonoBehaviour
             fireCountdown = 1f / fireRate;
         }
 
-        fireCountdown -= Time.deltaTime;
-
-        //audioManager.PlayEnemyDeathSound();           
-    }
-
-    // Checks for player to be within radius before being picked up
-    void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Player")
-        {
-            carryingTurret = true;
-            this.gameObject.transform.position = playerTurretHolder.transform.position;
-            this.gameObject.transform.rotation = playerTurretHolder.transform.rotation;
-            this.gameObject.transform.parent = playerTurretHolder.transform;
-            Debug.Log("player has picked up turret");
-        }
-
-        // checks for towertile before becoming a child of the collider
-        if (Input.GetKeyDown(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
-        {
-            if (other.gameObject.transform.childCount < 1)
-            {
-                this.gameObject.transform.parent = other.transform;
-                this.gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
-                carryingTurret = false;
-            }
-        }
-
+        fireCountdown -= Time.deltaTime;           
     }
 
     // Finds the closest target based on distance to turret
@@ -123,6 +97,21 @@ public class TurretScript : MonoBehaviour
             target = null;
         }
 
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        // checks for towertile before becoming a child of the collider
+        if (playerScript.carryingTurret && Input.GetKeyDown(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
+        {
+            if (other.gameObject.transform.childCount < 1)
+            {
+            gameObject.transform.SetParent(other.transform);
+            gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
+            playerScript.carryingTurret = false;
+            Debug.Log("Placed Turret Down");
+            }
+        }
     }
 
     // Spawns a bullet at the spawn position
