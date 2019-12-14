@@ -5,14 +5,19 @@ using TMPro;
 
 public class ShopSpawner : MonoBehaviour
 {
+    [Header("Variable reference")]
+    public bool canSpawn = false;
+
+    [Header("Manual references")]
     public GameObject turret;
     public Transform turretSpawnPoint;
-    public bool canSpawn = false;
-    GameObject gameManager;
-    GameManager GM;
     public TextMeshProUGUI shopDisplay;
 
-    public int turretCost = 15;
+    [Header("Automatic References")]
+    GameObject gameManager;
+    GameManager GM;
+
+    public int turretCost = 10;
 
     public void Start()
     {
@@ -30,7 +35,7 @@ public class ShopSpawner : MonoBehaviour
             Debug.Log("pressed e");
 
             //check if player is within proper range
-            if (canSpawn && GM.playerCurrency > turretCost)
+            if (canSpawn && GM.playerCurrency >= turretCost)
             {
                 SpawnTurret();
                 shopDisplay.text = null;
@@ -82,5 +87,6 @@ public class ShopSpawner : MonoBehaviour
         //instantiate a new turret at its spawnpoint
         Instantiate(turret, turretSpawnPoint.transform.position, Quaternion.identity);
         GM.playerCurrency -= turretCost;
+        shopDisplay.text = GM.playerCurrency.ToString();
     }
 }

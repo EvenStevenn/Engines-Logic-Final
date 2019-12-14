@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Manual References")]
     private int nextScene;
     public Button startButton;
     public Button exitButton;
@@ -20,13 +21,23 @@ public class GameManager : MonoBehaviour
     public string mainScene;
     public string mainmenuScene;
     public bool paused;
-
+    public bool canPause;
+    public TextMeshProUGUI livesDisplay;
     public TextMeshProUGUI playerCoinDisplay;
 
     public int deadEnemyCount;
     public int lives = 3;
 
     public int playerCurrency = 0;
+
+    //Start Game/Reload Game function
+    public void StartGame()
+    {
+        SceneManager.LoadScene(mainScene);
+        Debug.Log("Loading game level...");
+        Time.timeScale = 1f;
+        canPause = true;
+    }
 
     //Activate/Deactivate "Pause Menu" on Esc.
     void Update()
@@ -36,18 +47,13 @@ public class GameManager : MonoBehaviour
             UnPause();
         }
 
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape) && canPause == true)
         {
             Pause();
         }
-    }
 
-    //Start Game/Reload Game function
-    public void StartGame()
-    {
-        SceneManager.LoadScene(mainScene);
-        Debug.Log("Loading game level...");
-        Time.timeScale = 1f;
+        livesDisplay.text = lives.ToString();
+        playerCoinDisplay.text = playerCurrency.ToString();
     }
 
     //Return to Main Menu function
@@ -70,9 +76,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
         Debug.Log("Game is paused.");
         mainCam.GetComponent<CameraScript>().enabled = false;
+        canPause = false;
     }
 
     //Resume game/camera re-enable function
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Debug.Log("Game is resumed.");
         mainCam.GetComponent<CameraScript>().enabled = true;
+        canPause = true;
     }
 
     //Activate Victory Screem
@@ -94,6 +102,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Debug.Log("Level cleared. You win!");
         mainCam.GetComponent<CameraScript>().enabled = false;
+        canPause = false;
     }
 
     //Activate LoseScreen

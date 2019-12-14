@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class NPCMover : MonoBehaviour
 {
-    public GameObject waypoint0;
-    
-    public Node targetNode;
-
-    public string enemyName;
-
+    [Header("Enemy Attributes")]
     public int enemySpeed;
     public int enemyHealth;
     public int numOfCoins;
 
-    public bool isDead;
-    public bool reachedEnd;
-
-
+    [Header("Manual references")]
     public GameObject gameWinMenu;
     public GameObject gameOverMenu;
     public Camera mainCam;
 
+    [Header("Automatic References")]
+    public GameObject waypoint0;
+    public Node targetNode;
     public GameObject gameManager;
     public GameManager GM;
     public GameObject waveManager;
@@ -49,22 +44,26 @@ public class NPCMover : MonoBehaviour
         AM = audioManager.GetComponent<AudioManager>();
     }
 
+    // Moves the enemy towards its neighbour node
     private void Update()
     {
         float step = enemySpeed * Time.deltaTime;
 
-
+        // Destroys the gameobject once it hits the final node, decreases the life counter, and increases the enemy deathcount
         if(targetNode == null)
         {
             Destroy(gameObject);
             GM.lives--;
             GM.deadEnemyCount++;
             Debug.Log(GM.lives);
-            if (GM.lives <= 1)
+
+            // Checks if the number of lives has been reduced to zero and calls the game over screen if so
+            if (GM.lives < 1)
             {
                 GM.LossScreen();
             }
         }
+        // Else it will move towards its neighbour and generate a new neighbour hitting its node
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, targetNode.transform.position, step);
@@ -80,6 +79,7 @@ public class NPCMover : MonoBehaviour
 
         }
 
+        // Code to resolve the enemies death when hit by turret enough times
         if (enemyHealth <= 0)
         {
             // Deletes the enemy
@@ -101,6 +101,7 @@ public class NPCMover : MonoBehaviour
 
     }
 
+    // Code for the bulletPrefab to call when hitting the target
     public void TakeDamage (int attackValue)
     {
         enemyHealth -= attackValue;

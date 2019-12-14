@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerStart: 0
-  timerAtStart: 25
-  currentTimerValue: 25
+  timerAtStart: 10
+  currentTimerValue: 10
   timerText: {fileID: 1564119537}
   timerUI: {fileID: 1001568194}
   waveManager: {fileID: 0}

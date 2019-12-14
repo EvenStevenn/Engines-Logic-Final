@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 5813225714587759269, guid: eea96696baa5fc8419bcf68f59c2e98a, type: 3}
   - {fileID: 5813225714587759269, guid: eea96696baa5fc8419bcf68f59c2e98a, type: 3}
   waveID: 0
-  waveState: 3
+  waveState: 1
   deadEnemyCount: 0

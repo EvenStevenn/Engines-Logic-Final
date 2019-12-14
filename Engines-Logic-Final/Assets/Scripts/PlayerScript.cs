@@ -97,8 +97,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Turret")
         {
+            // Bools that prevent player from picking up another turret and having the turret shoot enemies
             carryingTurret = true;
             TS.canShoot = false;
+
+            // Sets the
             other.gameObject.transform.SetParent(playerTurretHolder.transform);
             other.gameObject.transform.position = playerTurretHolder.transform.position;
             other.gameObject.transform.rotation = playerTurretHolder.transform.rotation;

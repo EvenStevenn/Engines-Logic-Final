@@ -8,12 +8,14 @@ public class TurretScript : MonoBehaviour
     public GameObject gameManager;
     public GameManager GM;
     public GameObject waveManager;
-    public WaveManager waveManagerScript;
-    public AudioManager audioManager;
+    public WaveManager WM;
+    public GameObject audioManager;
+    public AudioManager AM;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public GameObject playerObj;
     public PlayerScript playerScript;
+    public GameObject upgradePart;
 
 
 
@@ -40,8 +42,10 @@ public class TurretScript : MonoBehaviour
 
         // Obtaining references to WaveManager
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
-        waveManagerScript = waveManager.GetComponent<WaveManager>();
+        WM = waveManager.GetComponent<WaveManager>();
 
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager");
+        AM = audioManager.GetComponent<AudioManager>();
 
         // Obtaining references to GameManager 
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
@@ -53,6 +57,12 @@ public class TurretScript : MonoBehaviour
 
     private void Update()
     {
+        // returns if there isn't a target
+        if (target == null)
+        {
+            return;
+        }
+
         if (gameObject.transform.parent.CompareTag("TowerTile"))
         {
             canShoot = true;
@@ -62,13 +72,6 @@ public class TurretScript : MonoBehaviour
         {
             canShoot = false;
             Debug.Log("Turret status, canShoot = " + canShoot);
-        }
-
-        // returns if there isn't a target
-        if (target == null)
-        {
-            return;
-
         }
 
         // looks at closest target
@@ -105,6 +108,7 @@ public class TurretScript : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
+        // For all enemies in the enemies array, check its distance to the shortest recorded distance and replace it if beaten
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -115,12 +119,14 @@ public class TurretScript : MonoBehaviour
             }
         }
 
+        // Sets the nearest enemy to the turret target
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
         }
         else
         {
+            // There is no target in range
             target = null;
         }
 
@@ -129,10 +135,12 @@ public class TurretScript : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // checks for towertile before becoming a child of the collider
-        if (playerScript.carryingTurret && Input.GetKeyDown(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
+        if (playerScript.carryingTurret && Input.GetKey(KeyCode.Mouse0) && other.gameObject.tag == "TowerTile")
         {
+            // Checks if the TowerTile already has a turret on it
             if (other.gameObject.transform.childCount < 1)
             {
+                // If no turret exists on the TowerTile, set the turret to be a child of the TowerTile and offset it's y-position
                 gameObject.transform.SetParent(other.transform);
                 gameObject.transform.position = other.transform.position + (new Vector3(0, 0.3f, 0));
                 playerScript.carryingTurret = false;
@@ -143,16 +151,20 @@ public class TurretScript : MonoBehaviour
     // Spawns a bullet at the spawn position
     void Shoot()
     {
+        // If the player isn't holding the tower
         if (canShoot)
         {
             Debug.Log("Shoot");
+            // Spawn a bulletPrefab at the muzzle of the tower, get the BulletScript on the prefab, and play the audio from the AudioManager
             GameObject bullet = (GameObject) Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+            AM.PlayProjectileSound();
 
+        //If a bullet exists, assign a target to the bullet to travel to
         if (bullet != null)
-        {
-            bulletScript.AssignTarget(target);
-        }
+            {
+                bulletScript.AssignTarget(target);
+            }
         }
     }
 }

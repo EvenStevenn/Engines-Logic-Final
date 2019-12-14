@@ -576,8 +576,8 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   enemyName: 
   enemySpeed: 2
-  enemyHealth: 10
-  numOfCoins: 10
+  enemyHealth: 5
+  numOfCoins: 2
   isDead: 0
   reachedEnd: 0
   gameWinMenu: {fileID: 0}
@@ -586,7 +586,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   GM: {fileID: 0}
   waveManager: {fileID: 0}
-  waveManagerScript: {fileID: 0}
+  WM: {fileID: 0}
+  audioManager: {fileID: 0}
+  AM: {fileID: 0}
 --- !u!95 &-9004779971163595474
 Animator:
   serializedVersion: 3

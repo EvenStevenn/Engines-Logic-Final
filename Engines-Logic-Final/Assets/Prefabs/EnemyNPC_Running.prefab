@@ -572,21 +572,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1098df63a69224580fd8b9db97036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoint0: {fileID: 0}
-  targetNode: {fileID: 0}
-  enemyName: 
-  enemySpeed: 4
-  enemyHealth: 15
-  numOfCoins: 20
-  isDead: 0
-  reachedEnd: 0
+  enemySpeed: 3
+  enemyHealth: 10
+  numOfCoins: 4
   gameWinMenu: {fileID: 0}
   gameOverMenu: {fileID: 0}
   mainCam: {fileID: 0}
+  waypoint0: {fileID: 0}
+  targetNode: {fileID: 0}
   gameManager: {fileID: 0}
   GM: {fileID: 0}
   waveManager: {fileID: 0}
-  waveManagerScript: {fileID: 0}
+  WM: {fileID: 0}
+  audioManager: {fileID: 0}
+  AM: {fileID: 0}
 --- !u!95 &-2308721737793117067
 Animator:
   serializedVersion: 3

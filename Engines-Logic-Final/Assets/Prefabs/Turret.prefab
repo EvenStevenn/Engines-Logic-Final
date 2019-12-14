@@ -316,6 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046928895659014616}
+  - component: {fileID: 2033299035025512144}
   m_Layer: 0
   m_Name: Upgrade
   m_TagString: Untagged
@@ -339,6 +340,39 @@ Transform:
   m_Father: {fileID: 6043363934879242620}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033299035025512144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942986162874696776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcea9d669482d349a3487fa63b54e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  GM: {fileID: 0}
+  waveManager: {fileID: 0}
+  WM: {fileID: 0}
+  audioManager: {fileID: 0}
+  AM: {fileID: 0}
+  bulletPrefab: {fileID: 2596879432686119988, guid: cc8fae123c724634cbd0788c54f738d5,
+    type: 3}
+  bulletSpawnPoint: {fileID: 5145754784320679244}
+  playerObj: {fileID: 0}
+  playerScript: {fileID: 0}
+  upgradePart: {fileID: 0}
+  enemy: {fileID: 0}
+  Distance: {x: 0, y: 0, z: 0}
+  turretHead: {fileID: 0}
+  raycastDirection: {fileID: 0}
+  canShoot: 0
+  range: 10
+  rotationSpeed: 10
+  fireRate: 2
+  fireCountdown: 1
 --- !u!1 &4430507429465033801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,8 +1084,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   GM: {fileID: 0}
   waveManager: {fileID: 0}
-  waveManagerScript: {fileID: 0}
+  WM: {fileID: 0}
   audioManager: {fileID: 0}
+  AM: {fileID: 0}
   bulletPrefab: {fileID: 2596879432686119988, guid: cc8fae123c724634cbd0788c54f738d5,
     type: 3}
   bulletSpawnPoint: {fileID: 6043363934039440047}
@@ -1059,10 +1094,12 @@ MonoBehaviour:
     type: 3}
   playerScript: {fileID: 2781989447719907873, guid: e3cb18012ee6ad04d8011bc1583125fd,
     type: 3}
+  upgradePart: {fileID: 3942986162874696776}
   enemy: {fileID: 0}
   Distance: {x: 0, y: 0, z: 0}
   turretHead: {fileID: 6043363933926936231}
   raycastDirection: {fileID: 0}
+  canShoot: 0
   range: 5
   rotationSpeed: 10
   fireRate: 1

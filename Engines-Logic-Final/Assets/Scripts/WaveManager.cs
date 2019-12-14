@@ -16,38 +16,40 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI countdownTimerText;
     // public float currentTimeValue = 20f;
 
+    [Header("Adjustable Attributes")]
     public float timeBetweenWaves = 4f;
     public float timeBetweenEnemies = 1f;
 
-    public int waveID;
-    public int wavesFinished;
-
+    [Header("Manual References")]
     public GameObject waveTimer;
-    public Timer waveTimerScript;
-
     public GameObject waveNumberObj;
     public TextMeshProUGUI waveNumber;
-
     public GameObject finalWaypoint;
+
+    [Header("Automatic References")]
     public GameObject gameManager;
     public GameManager GM;
-
     public AudioManager audioManager;
+    public Timer waveTimerScript;
 
-
+    [Header("Variables for script")]
+    public int waveID;
+    public int wavesFinished;
+    public int numOfEnemiesRemaining;
 
     
     // Starts the first wave and gets all the references to the scripts needed for the WaveManager to function
     private void Start()
     {
+        // Starts SpawnEnemies coroutine
         StartCoroutine(SpawnEnemies());
 
-        // Obtaining references for the wave timer
+        // Obtaining references for the wave timer and turns off waveTimer
         waveTimer = GameObject.FindGameObjectWithTag("WaveTimer");
         waveTimerScript = waveTimer.GetComponent<Timer>();
         waveTimer.SetActive(false);
 
-        // obtaining references for the UI wave number display
+        // obtaining references for the UI wave number display and updates the wave display on start
         waveNumberObj = GameObject.FindGameObjectWithTag("WaveNumber");
         waveNumber = waveNumberObj.GetComponent<TextMeshProUGUI>();
         waveNumber.text = (waveID + 1).ToString();
@@ -68,6 +70,7 @@ public class WaveManager : MonoBehaviour
                 waveSO.waveState = WaveState.attacking;
                 foreach (GameObject singleEnemy in waveSO.ListOfEnemies)
                 {
+                    // Checks if the wave is attacking and will: Instantiate an enemy, set its position, play the spawn sound, and wait for the timeBetweenEnemeis
                     if (waveSO.waveState == WaveState.attacking)
                     {
                         Instantiate(singleEnemy);
@@ -88,14 +91,23 @@ public class WaveManager : MonoBehaviour
         {
             foreach (GameObject enemy in waveSO.ListOfEnemies)
             {
+                // Checks if the wave is in the state of attacking but every enemy is dead/gone
                 if (waveSO.waveState == WaveState.attacking && waveSO.ListOfEnemies.Count == GM.deadEnemyCount)
                 {
                     Debug.Log("No enemies in-game, start next wave");
+
+                    // Increases the waveID to trigger next wave and wavesFinished for win condition
                     waveID++;
                     wavesFinished++;
+
+                    // Changes state to finished
                     waveSO.waveState = WaveState.finished;
+
+                    // Toggles the intermission timer (between waves timer)
                     waveTimer.SetActive(true);
                     waveTimerScript.timerStart = true;
+
+                    // Resets the enemy dead count for the next wave
                     GM.deadEnemyCount = 0;
                 }
 
@@ -104,11 +116,7 @@ public class WaveManager : MonoBehaviour
                     GM.VictoryScreen();
                 }
             }
-            
-
         }
-
-
     }
 
     // Starts the next wave if the wave ID counter in the wavemanager matches the wave ID of the SO
@@ -138,7 +146,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // Debug method to increase the death count of the current wave
+    // Debug method to increase the death count of the current wave (no purpose in build)
     [ContextMenu("Debug: Increase DeathCount")]
     public void DebugTestIncreaseDeathcount()
     {
